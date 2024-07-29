@@ -4,10 +4,10 @@ import { SearchBar } from "../SearchBar/SearchBar.tsx";
 
 export const DictionaryPage = () => {
   return (
-    <>
+    <div className={styles.container}>
       <SearchBar></SearchBar>
       <div className={styles.wyszukiwanie}></div>
       <WordsBar></WordsBar>
-    </>
+    </div>
   );
 };
