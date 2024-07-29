@@ -1,7 +1,8 @@
 import "./App.module.sass";
+import { DictionaryPage } from "./components/DictionaryPage/DictionaryPage";
 
 function App() {
-  return <></>;
+  return <DictionaryPage></DictionaryPage>;
 }
 
 export default App;

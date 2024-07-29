@@ -9,5 +9,5 @@ export const WordsBar = () => {
     }
   };
 
-  return <>{wordsMapping}</>;
+  return <div className={styles.WordsBar}>{wordsMapping()}</div>;
 };
