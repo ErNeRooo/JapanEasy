@@ -4,13 +4,13 @@ export const Word = ({ name, hiragana, definition, romaji }: IProps) => {
   return (
     <div className={styles.word}>
       <div className={styles.leftBar}>
-        <h1 className={styles.name}>{name}</h1>
-        <h1 className={styles.hiragana}>{hiragana}</h1>
+        <div className={styles.name}>{name}</div>
+        <div className={styles.hiragana}>{hiragana}</div>
       </div>
 
       <div className={styles.rightBar}>
-        <h1 className={styles.romaji}>{romaji}</h1>
-        <h1 className={styles.definition}>{definition}</h1>
+        <div className={styles.romaji}>{romaji}</div>
+        <div className={styles.definition}>{definition}</div>
       </div>
     </div>
   );

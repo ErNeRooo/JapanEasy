@@ -9,6 +9,10 @@ export const WordsBar = () => {
     ["家", "いえ", "iu", "dom"],
     ["新しい", "あたらしい", "atarashii", "nowe"],
     ["私", "わたし", "watashi", "Ja"],
+    ["私", "わたし", "watashi", "Ja"],
+    ["私", "わたし", "watashi", "Ja"],
+    ["私", "わたし", "watashi", "Ja"],
+    ["私", "わたし", "watashi", "Ja"],
   ]);
 
   return (
