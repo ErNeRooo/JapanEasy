@@ -1,12 +1,11 @@
-import styles from "./DictionaryPage.module.sass";
 import { WordsBar } from "../WordsBar/WordsBar.tsx";
-import { SearchBar } from "../SearchBar/SearchBar.tsx";
+import { NavBar } from "../NavBar/NavBar.tsx";
 
 export const DictionaryPage = () => {
   return (
-    <div className={styles.container}>
-      <SearchBar></SearchBar>
+    <>
+      <NavBar></NavBar>
       <WordsBar></WordsBar>
-    </div>
+    </>
   );
 };

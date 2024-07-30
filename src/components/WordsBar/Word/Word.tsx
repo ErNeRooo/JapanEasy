@@ -1,16 +1,16 @@
 import styles from "./Word.module.sass";
 
-export const Word = ({ name, hiragana, definition, romaji }: IProps) => {
+export const Word = ({ name, definition, romaji }: IProps) => {
   return (
     <div className={styles.word}>
-      <div className={styles.leftBar}>
-        <div className={styles.name}>{name}</div>
-        <div className={styles.hiragana}>{hiragana}</div>
+      <div className={styles.name}>
+        <label>{name}</label>
       </div>
-
-      <div className={styles.rightBar}>
-        <div className={styles.romaji}>{romaji}</div>
-        <div className={styles.definition}>{definition}</div>
+      <div className={styles.romaji}>
+        <label>{romaji}</label>
+      </div>
+      <div className={styles.definition}>
+        <label>{definition}</label>
       </div>
     </div>
   );
@@ -18,7 +18,6 @@ export const Word = ({ name, hiragana, definition, romaji }: IProps) => {
 
 interface IProps {
   name: string;
-  hiragana: string;
   definition: string;
   romaji: string;
 }
