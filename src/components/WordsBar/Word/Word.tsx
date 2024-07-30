@@ -4,8 +4,10 @@ export const Word = ({ name, definition, pronunciation }: IProps) => {
   return (
     <div className={styles.word}>
       <h1 className={styles.name}>{name}</h1>
-      <h1 className={styles.pronunciation}>{pronunciation}</h1>
-      <h1 className={styles.definition}>{definition}</h1>
+      <div className={styles.sideBar}>
+        <h1 className={styles.pronunciation}>{pronunciation}</h1>
+        <h1 className={styles.definition}>{definition}</h1>
+      </div>
     </div>
   );
 };
