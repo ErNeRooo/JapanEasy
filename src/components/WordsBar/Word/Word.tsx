@@ -1,11 +1,15 @@
 import styles from "./Word.module.sass";
 
-export const Word = ({ name, definition, pronunciation }: IProps) => {
+export const Word = ({ name, hiragana, definition, romaji }: IProps) => {
   return (
     <div className={styles.word}>
-      <h1 className={styles.name}>{name}</h1>
-      <div className={styles.sideBar}>
-        <h1 className={styles.pronunciation}>{pronunciation}</h1>
+      <div className={styles.leftBar}>
+        <h1 className={styles.name}>{name}</h1>
+        <h1 className={styles.hiragana}>{hiragana}</h1>
+      </div>
+
+      <div className={styles.rightBar}>
+        <h1 className={styles.romaji}>{romaji}</h1>
         <h1 className={styles.definition}>{definition}</h1>
       </div>
     </div>
@@ -14,6 +18,7 @@ export const Word = ({ name, definition, pronunciation }: IProps) => {
 
 interface IProps {
   name: string;
+  hiragana: string;
   definition: string;
-  pronunciation: string;
+  romaji: string;
 }
