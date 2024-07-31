@@ -4,22 +4,70 @@ import { Word } from "./Word/Word";
 
 export const WordsBar = () => {
   const [words, setWords] = useState([
-    ["事", "こと", "koto", "sprawa"],
-    ["言う", "いう", "iu", "mówić, rozmawiać"],
-    ["家", "いえ", "iu", "dom"],
-    ["新しい", "あたらしい", "atarashii", "nowe"],
-    ["繰り返す", "くりかえす", "kurikaesu", "powtarzać"],
-    ["私私私私私", "わたし", "watashi", "Ja"],
-    ["私私私私私私", "わたし", "watashi", "Ja"],
-    ["私私私私私私私", "わたし", "watashi", "Ja"],
-    ["私私私私私私私私", "わたし", "watashi", "Ja"],
+    {
+      frequencyPlace: 18,
+      name: "言う",
+      romaji: "iu",
+      partOfSpeech: "verb",
+      definition: "say, speak, talk",
+    },
+    {
+      frequencyPlace: 48,
+      name: "行く",
+      romaji: "iku",
+      partOfSpeech: "verb",
+      definition: "go; come",
+    },
+    {
+      frequencyPlace: 64,
+      name: "来る",
+      romaji: "kuru",
+      partOfSpeech: "verb",
+      definition: "come",
+    },
+    {
+      frequencyPlace: 67,
+      name: "見る",
+      romaji: "miru",
+      partOfSpeech: "verb",
+      definition: "see; look at, watch; check",
+    },
+    {
+      frequencyPlace: 58,
+      name: "人",
+      romaji: "hito",
+      partOfSpeech: "noun",
+      definition: "person, people, human being",
+    },
+    {
+      frequencyPlace: 47,
+      name: "無い",
+      romaji: "nai",
+      partOfSpeech: "i-adj.",
+      definition: "There is no . . . , no . . .",
+    },
+    {
+      frequencyPlace: 31,
+      name: "けれど",
+      romaji: "keredo",
+      partOfSpeech: "conj.",
+      definition: "though, although",
+    },
   ]);
 
   return (
     <div className={styles.WordsBar}>
-      {words.map((word) => (
-        <Word name={word[0]} romaji={word[2]} definition={word[3]} />
-      ))}
+      {words.map(
+        ({ frequencyPlace, name, romaji, partOfSpeech, definition }) => (
+          <Word
+            frequencyPlace={frequencyPlace}
+            name={name}
+            romaji={romaji}
+            partOfSpeech={partOfSpeech}
+            definition={definition}
+          />
+        )
+      )}
     </div>
   );
 };
