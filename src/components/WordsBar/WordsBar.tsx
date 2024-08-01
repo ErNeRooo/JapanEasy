@@ -53,6 +53,13 @@ export const WordsBar = () => {
       partOfSpeech: "conj.",
       definition: "though, although",
     },
+    {
+      frequencyPlace: 794,
+      name: "繰り返す",
+      romaji: "kurikaesu",
+      partOfSpeech: "verb",
+      definition: "repeat, do over again",
+    },
   ]);
 
   return (
