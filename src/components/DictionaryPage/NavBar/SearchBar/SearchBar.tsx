@@ -1,5 +1,5 @@
-import searchIcon from "../../../assets/Search-Icon.svg";
-import slidersIcon from "../../../assets/sliders-icon.svg";
+import searchIcon from "../../../../assets/Search-Icon.svg";
+import slidersIcon from "../../../../assets/sliders-icon.svg";
 import styles from "./SearchBar.module.sass";
 
 export const SearchBar = () => {

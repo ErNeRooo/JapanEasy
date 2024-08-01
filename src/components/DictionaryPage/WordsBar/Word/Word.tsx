@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./Word.module.sass";
 
 export const Word = ({
