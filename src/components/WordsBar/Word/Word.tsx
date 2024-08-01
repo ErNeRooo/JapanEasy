@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./Word.module.sass";
 
 export const Word = ({
@@ -8,10 +9,10 @@ export const Word = ({
   romaji,
 }: IProps) => {
   return (
-    <div className={styles.word}>
+    <div className={styles.word} key={frequencyPlace}>
       <div className={styles.name}>
         <label>
-          {frequencyPlace}. {name}
+          {frequencyPlace}. <span className={styles.white}>{name}</span>
           <span className={styles.romaji}>{romaji}</span>
         </label>
       </div>
