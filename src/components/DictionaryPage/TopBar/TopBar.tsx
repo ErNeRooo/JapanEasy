@@ -1,12 +1,14 @@
 import { SearchBar } from "./SearchBar/SearchBar";
 import styles from "./TopBar.module.sass";
-import { PanelButton } from "./Panel/NavSidePanelButton";
+import { NavPanelButton } from "./NavPanelButton/NavPanelButton";
+import { SettingsPanelButton } from "./SettingsPanelButton/SettingsPanelButton";
 
 export const TopBar = () => {
   return (
     <div className={styles.TopBar}>
-      <PanelButton></PanelButton>
+      <NavPanelButton></NavPanelButton>
       <SearchBar></SearchBar>
+      <SettingsPanelButton></SettingsPanelButton>
     </div>
   );
 };

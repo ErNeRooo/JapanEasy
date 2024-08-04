@@ -1,12 +1,12 @@
-import styles from "./NavSidePanel.module.sass";
+import styles from "./NavPanel.module.sass";
 import { useContext } from "react";
-import isOpenContext from "../../../context/isNavSidePanelOpenContext";
+import isOpenContext from "../../../context/isNavPanelOpenContext";
 
-const NavSidePanel = () => {
+const NavPanel = () => {
   const isOpenObject = useContext(isOpenContext);
   return (
     <div
-      className={styles.NavSidePanel}
+      className={styles.NavPanel}
       style={
         isOpenObject.isOpen
           ? { transform: "translateX(100%)" }
@@ -16,4 +16,4 @@ const NavSidePanel = () => {
   );
 };
 
-export default NavSidePanel;
+export default NavPanel;

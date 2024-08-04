@@ -1,17 +1,30 @@
 import { WordsBar } from "./WordsBar/WordsBar.tsx";
 import { TopBar } from "./TopBar/TopBar.tsx";
-import NavSidePanel from "./NavSidePanel/NavSidePanel.tsx";
-import isOpenContext from "../../context/isNavSidePanelOpenContext.ts";
+import NavPanel from "./NavPanel/NavPanel.tsx";
+import isNavPanelOpenContext from "../../context/isNavPanelOpenContext.ts";
+import isSettingsPanelOpenContext from "../../context/isSettingsPanelOpenContext.ts";
 import { useState } from "react";
+import SettingsPanel from "./SettingsPanel/SettingsPanel.tsx";
 
 export const DictionaryPage = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isNavPanelOpen, setIsNavPanelOpen] = useState(false);
+  const [isSettingsPanelOpen, setIsSettingsPanelOpen] = useState(false);
 
   return (
-    <isOpenContext.Provider value={{ isOpen, setIsOpen }}>
-      <TopBar></TopBar>
-      <NavSidePanel></NavSidePanel>
-      <WordsBar></WordsBar>
-    </isOpenContext.Provider>
+    <isSettingsPanelOpenContext.Provider
+      value={{
+        isOpen: isSettingsPanelOpen,
+        setIsOpen: setIsSettingsPanelOpen,
+      }}
+    >
+      <isNavPanelOpenContext.Provider
+        value={{ isOpen: isNavPanelOpen, setIsOpen: setIsNavPanelOpen }}
+      >
+        <TopBar></TopBar>
+        <NavPanel></NavPanel>
+        <WordsBar></WordsBar>
+        <SettingsPanel></SettingsPanel>
+      </isNavPanelOpenContext.Provider>
+    </isSettingsPanelOpenContext.Provider>
   );
 };

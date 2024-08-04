@@ -1,16 +1,16 @@
 import { useContext } from "react";
-import isNavSidePanelOpenContext from "../../../../context/isNavSidePanelOpenContext";
-import styles from "./NavSidePanelButton.module.sass";
+import isSettingsPanelOpenContext from "../../../../context/isSettingsPanelOpenContext";
+import styles from "./SettingsPanelButton.module.sass";
 import image from "../../../../assets/sliders-icon.svg";
 
-export const PanelButton = () => {
-  const isNavSidePanelOpenObject = useContext(isNavSidePanelOpenContext);
+export const SettingsPanelButton = () => {
+  const isSettingsPanelOpenObject = useContext(isSettingsPanelOpenContext);
 
   const HandleOnClick = () => {
-    isNavSidePanelOpenObject.setIsOpen(!isNavSidePanelOpenObject.isOpen);
+    isSettingsPanelOpenObject.setIsOpen(!isSettingsPanelOpenObject.isOpen);
   };
 
-  return isNavSidePanelOpenObject.isOpen ? (
+  return isSettingsPanelOpenObject.isOpen ? (
     <div
       className={styles.Panel + " " + styles.Clicked}
       onClick={HandleOnClick}
