@@ -1,10 +1,10 @@
 import { WordsBar } from "./WordsBar/WordsBar.tsx";
-import { NavBar } from "./NavBar/NavBar.tsx";
+import { TopBar } from "./TopBar/TopBar.tsx";
 
 export const DictionaryPage = () => {
   return (
     <>
-      <NavBar></NavBar>
+      <TopBar></TopBar>
       <WordsBar></WordsBar>
     </>
   );
