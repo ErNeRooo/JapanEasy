@@ -4,13 +4,15 @@ import isOpenContext from "../../../context/isNavSidePanelOpenContext";
 
 const NavSidePanel = () => {
   const isOpenObject = useContext(isOpenContext);
-  return isOpenObject.isOpen ? (
+  return (
     <div
       className={styles.NavSidePanel}
-      style={{ transform: "translateX(0)" }}
+      style={
+        isOpenObject.isOpen
+          ? { transform: "translateX(100%)" }
+          : { transform: "translateX(0)" }
+      }
     ></div>
-  ) : (
-    <div className={styles.NavSidePanel}></div>
   );
 };
 
