@@ -1,6 +1,7 @@
 import styles from "./SettingsPanel.module.sass";
 import { useContext } from "react";
 import isOpenContext from "../../../context/isSettingsPanelOpenContext";
+import ThemeBar from "./ThemeBar/ThemeBar";
 
 const SettingsPanel = () => {
   const isOpenObject = useContext(isOpenContext);
@@ -12,7 +13,9 @@ const SettingsPanel = () => {
           ? { transform: "translateX(-100%)" }
           : { transform: "translateX(0)" }
       }
-    ></div>
+    >
+      <ThemeBar></ThemeBar>
+    </div>
   );
 };
 
