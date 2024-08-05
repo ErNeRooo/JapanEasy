@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import styles from "./Word.module.sass";
+import themeContext from "../../../../context/themeContext";
 
 export const Word = ({
   frequencyPlace,
@@ -7,12 +9,23 @@ export const Word = ({
   definition,
   romaji,
 }: IProps) => {
+  const { wordColor, secondFontColor, mainFontColor } =
+    useContext(themeContext);
+
+  const style = {
+    background: wordColor,
+    color: secondFontColor,
+  };
+
   return (
-    <div className={styles.word} key={frequencyPlace}>
+    <div className={styles.word} key={frequencyPlace} style={style}>
       <div className={styles.name}>
         <label>
-          {frequencyPlace}. <span className={styles.white}>{name}</span>
-          <span className={styles.romaji}>{romaji}</span>
+          <span style={{ color: secondFontColor }}>{frequencyPlace}.</span>{" "}
+          <span style={{ color: mainFontColor }}>{name}</span>
+          <span className={styles.romaji} style={{ color: secondFontColor }}>
+            {romaji}
+          </span>
         </label>
       </div>
       <div className={styles.partOfSpeech}>

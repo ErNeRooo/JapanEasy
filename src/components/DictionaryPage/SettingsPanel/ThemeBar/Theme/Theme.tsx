@@ -2,7 +2,7 @@ import styles from "./Theme.module.sass";
 
 const Theme = ({ name, backgroundColor }: IProps) => {
   return (
-    <div className={styles.Theme} style={{ backgroundColor: backgroundColor }}>
+    <div className={styles.Theme} style={{ background: backgroundColor }}>
       {name}
     </div>
   );
