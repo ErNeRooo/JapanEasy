@@ -20,9 +20,7 @@ const Theme = ({ name, backgroundColor }: IProps) => {
       className={styles.Theme}
       style={{ background: backgroundColor }}
       onClick={handleOnClick}
-    >
-      {name}
-    </div>
+    ></div>
   );
 };
 

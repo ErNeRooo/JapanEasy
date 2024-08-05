@@ -6,25 +6,31 @@ import themeContext from "../../../../context/themeContext";
 
 export const SearchBar = () => {
   const {
-    themeObject: { searchBarColor },
+    themeObject: { searchBarColor, iconsColor, lineColor },
   } = useContext(themeContext);
 
-  const style = {
+  const background = {
     background: searchBarColor,
+  };
+  const imageStyle = {
+    filter: iconsColor,
+  };
+  const lineStyle = {
+    borderLeft: "1px solid " + lineColor,
   };
 
   return (
-    <div className={styles.searchBar} style={style}>
+    <div className={styles.searchBar} style={background}>
       <div className={styles.searchIcon}>
-        <img src={searchIcon} />
+        <img src={searchIcon} style={imageStyle} />
       </div>
-      <hr />
+      <hr style={lineStyle} />
 
       <input type="text" />
 
-      <hr />
+      <hr style={lineStyle} />
       <div className={styles.filter}>
-        <img src={slidersIcon} />
+        <img src={slidersIcon} style={imageStyle} />
       </div>
     </div>
   );

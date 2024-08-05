@@ -7,16 +7,20 @@
     "searchBarColor": "rgba(52, 52, 52, 0.75)",
     "wordColor": "linear-gradient(to top right, #353535, #484848)",
     "mainFontColor": "white",
-    "secondFontColor": "#BFBFBF"
+    "secondFontColor": "#BFBFBF",
+    "iconsColor": "brightness(100%)",
+    "lineColor": "#4c4c4c"
   },
   {
     "name": "light",
     "iconColor": "white",
-    "sidePanelsColor": "white",
-    "mainColor": "#2D2D2D",
-    "searchBarColor": "rgba(52, 52, 52, 0.75)",
-    "wordColor": "linear-gradient(to top right, #353535, #484848)",
-    "mainFontColor": "white",
-    "secondFontColor": "#BFBFBF"
+    "sidePanelsColor": "#ebebeb",
+    "mainColor": "white",
+    "searchBarColor": "rgba(255, 255, 255, 0.75)",
+    "wordColor": "rgba(255, 255, 255, 0.75)",
+    "mainFontColor": "black",
+    "secondFontColor": "black",
+    "iconsColor": "brightness(0%)",
+    "lineColor": "#4c4c4c"
   }
 ]

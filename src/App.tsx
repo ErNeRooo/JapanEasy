@@ -33,7 +33,11 @@ function App() {
     wordColor: "linear-gradient(to top right, #353535, #484848)",
     mainFontColor: "white",
     secondFontColor: "#BFBFBF",
+    iconsColor: "filter: invert(100%) brightness(200%)",
+    lineColor: "#4c4c4c",
   });
+
+  document.documentElement.style.setProperty("--bodyColor", theme.mainColor);
 
   return (
     <themeContext.Provider value={{ themeObject: theme, setter: setTheme }}>
@@ -50,6 +54,8 @@ export interface themeTypes {
   wordColor: string;
   mainFontColor: string;
   secondFontColor: string;
+  iconsColor: string;
+  lineColor: string;
 }
 
 export default App;

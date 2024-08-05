@@ -15,6 +15,8 @@ const themeContext = createContext<themeContextTypes>({
     wordColor: "linear-gradient(to top right, #353535, #484848)",
     mainFontColor: "white",
     secondFontColor: "BFBFBF",
+    iconsColor: "filter: invert(100%) brightness(200%)",
+    lineColor: "#4c4c4c",
   },
   setter: () => {},
 });
