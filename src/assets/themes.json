@@ -1,0 +1,18 @@
+[
+  {
+    "name": "dark",
+    "iconColor": "black",
+    "sidePanelsColor": "#212121",
+    "mainColor": "#2D2D2D",
+    "mainFontColor": "white",
+    "secondFontColor": "BFBFBF"
+  },
+  {
+    "name": "light",
+    "iconColor": "white",
+    "sidePanelsColor": "#212121",
+    "mainColor": "#2D2D2D",
+    "mainFontColor": "white",
+    "secondFontColor": "BFBFBF"
+  }
+]

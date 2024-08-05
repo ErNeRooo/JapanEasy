@@ -1,11 +1,13 @@
 import styles from "./ThemeBar.module.sass";
 import Theme from "./Theme/Theme";
+import themes from "../../../../assets/themes.json";
 
 const ThemeBar = () => {
   return (
     <div className={styles.ThemeBar}>
-      <Theme></Theme>
-      <Theme></Theme>
+      {themes.map(({ name, iconColor }) => {
+        return <Theme name={name} backgroundColor={iconColor}></Theme>;
+      })}
     </div>
   );
 };
