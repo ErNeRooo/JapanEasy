@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import isSettingsPanelOpenContext from "../../../../context/isSettingsPanelOpenContext";
 import styles from "./SettingsPanelButton.module.sass";
-import image from "../../../../assets/sliders-icon.svg";
+import image from "../../../../assets/menu.svg";
 
 export const SettingsPanelButton = () => {
   const isSettingsPanelOpenObject = useContext(isSettingsPanelOpenContext);

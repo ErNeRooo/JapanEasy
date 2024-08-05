@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import isNavPanelOpenContext from "../../../../context/isNavPanelOpenContext";
 import styles from "./NavPanelButton.module.sass";
-import image from "../../../../assets/sliders-icon.svg";
+import image from "../../../../assets/menu.svg";
 
 export const NavPanelButton = () => {
   const isNavPanelOpenObject = useContext(isNavPanelOpenContext);
