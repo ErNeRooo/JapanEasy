@@ -5,7 +5,9 @@ import styles from "./SearchBar.module.sass";
 import themeContext from "../../../../context/themeContext";
 
 export const SearchBar = () => {
-  const { searchBarColor } = useContext(themeContext);
+  const {
+    themeObject: { searchBarColor },
+  } = useContext(themeContext);
 
   const style = {
     background: searchBarColor,

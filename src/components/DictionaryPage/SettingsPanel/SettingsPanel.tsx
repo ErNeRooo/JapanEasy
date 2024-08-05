@@ -6,7 +6,9 @@ import themeContext from "../../../context/themeContext";
 
 const SettingsPanel = () => {
   const isOpenObject = useContext(isOpenContext);
-  const { sidePanelsColor } = useContext(themeContext);
+  const {
+    themeObject: { sidePanelsColor },
+  } = useContext(themeContext);
 
   const style = isOpenObject.isOpen
     ? { background: sidePanelsColor, transform: "translateX(-100%)" }

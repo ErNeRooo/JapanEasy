@@ -5,7 +5,9 @@ import themeContext from "../../../context/themeContext";
 
 const NavPanel = () => {
   const isOpenObject = useContext(isOpenContext);
-  const { sidePanelsColor } = useContext(themeContext);
+  const {
+    themeObject: { sidePanelsColor },
+  } = useContext(themeContext);
 
   const inLineStyle = isOpenObject.isOpen
     ? { backgroundColor: sidePanelsColor, transform: "translateX(100%)" }

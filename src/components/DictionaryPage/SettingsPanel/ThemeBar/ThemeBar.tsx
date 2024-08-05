@@ -5,7 +5,9 @@ import { useContext } from "react";
 import themeContext from "../../../../context/themeContext";
 
 const ThemeBar = () => {
-  const { mainColor } = useContext(themeContext);
+  const {
+    themeObject: { mainColor },
+  } = useContext(themeContext);
 
   const style = {
     background: mainColor,

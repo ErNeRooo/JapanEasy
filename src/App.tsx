@@ -36,7 +36,7 @@ function App() {
   });
 
   return (
-    <themeContext.Provider value={theme}>
+    <themeContext.Provider value={{ themeObject: theme, setter: setTheme }}>
       <DictionaryPage></DictionaryPage>
     </themeContext.Provider>
   );

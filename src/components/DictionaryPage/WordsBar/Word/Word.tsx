@@ -9,8 +9,9 @@ export const Word = ({
   definition,
   romaji,
 }: IProps) => {
-  const { wordColor, secondFontColor, mainFontColor } =
-    useContext(themeContext);
+  const {
+    themeObject: { wordColor, secondFontColor, mainFontColor },
+  } = useContext(themeContext);
 
   const style = {
     background: wordColor,
