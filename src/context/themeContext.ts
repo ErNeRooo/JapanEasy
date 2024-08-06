@@ -11,6 +11,7 @@ const themeContext = createContext<themeContextTypes>({
     name: "dark",
     sidePanelsColor: "#212121",
     mainColor: "#2D2D2D",
+    secondColor: "#2D2D2D",
     searchBarColor: "rgba(52, 52, 52, 0.75)",
     wordColor: "linear-gradient(to top right, #353535, #484848)",
     mainFontColor: "white",

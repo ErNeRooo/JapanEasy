@@ -5,8 +5,6 @@ import firebase from "firebase/compat/app";
 import themeContext from "./context/themeContext";
 import { useState } from "react";
 
-firebase.initializeApp(firebaseConfig);
-
 function App() {
   const [theme, setTheme] = useState<themeTypes>({
     name: "dark",
@@ -24,6 +22,8 @@ function App() {
   console.log(firebase);
 
   document.documentElement.style.setProperty("--bodyColor", theme.mainColor);
+
+  firebase.initializeApp(firebaseConfig);
 
   return (
     <themeContext.Provider value={{ themeObject: theme, setter: setTheme }}>

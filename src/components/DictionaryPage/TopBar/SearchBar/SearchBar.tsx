@@ -3,7 +3,6 @@ import searchIcon from "../../../../assets/Search-Icon.svg";
 import slidersIcon from "../../../../assets/sliders-icon.svg";
 import styles from "./SearchBar.module.sass";
 import themeContext from "../../../../context/themeContext";
-import { color } from "framer-motion";
 
 export const SearchBar = () => {
   const {
