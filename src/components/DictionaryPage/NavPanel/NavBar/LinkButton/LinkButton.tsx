@@ -4,15 +4,16 @@ import themeContext from "../../../../../context/themeContext";
 
 const LinkButton = ({ children }: IProps) => {
   const {
-    themeObject: { lineColor },
+    themeObject: { mainFontColor, sidePanelsColor },
   } = useContext(themeContext);
 
   const style = {
-    borderBottom: "1px solid" + lineColor,
+    color: mainFontColor,
+    background: sidePanelsColor,
   };
 
   return (
-    <div className={styles.Link} style={style}>
+    <div className={styles.LinkButton} style={style}>
       {children}
     </div>
   );

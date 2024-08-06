@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styles from "./NavBar.module.sass";
 import themeContext from "../../../../context/themeContext";
-import LinkButton from "./Link/LinkButton";
+import LinkButton from "./LinkButton/LinkButton";
 
 const linkList: linkListTypes[] = [{ name: "Home" }, { name: "About" }];
 
