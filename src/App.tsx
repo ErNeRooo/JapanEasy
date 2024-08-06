@@ -19,8 +19,6 @@ function App() {
     lineColor: "#4c4c4c",
   });
 
-  console.log(firebase);
-
   document.documentElement.style.setProperty("--bodyColor", theme.mainColor);
 
   firebase.initializeApp(firebaseConfig);
