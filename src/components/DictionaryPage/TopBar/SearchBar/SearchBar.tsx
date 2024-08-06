@@ -3,10 +3,11 @@ import searchIcon from "../../../../assets/Search-Icon.svg";
 import slidersIcon from "../../../../assets/sliders-icon.svg";
 import styles from "./SearchBar.module.sass";
 import themeContext from "../../../../context/themeContext";
+import { color } from "framer-motion";
 
 export const SearchBar = () => {
   const {
-    themeObject: { searchBarColor, iconsColor, lineColor },
+    themeObject: { searchBarColor, iconsColor, lineColor, mainFontColor },
   } = useContext(themeContext);
 
   const background = {
@@ -18,6 +19,9 @@ export const SearchBar = () => {
   const lineStyle = {
     borderLeft: "1px solid " + lineColor,
   };
+  const inputStyle = {
+    color: mainFontColor,
+  };
 
   return (
     <div className={styles.searchBar} style={background}>
@@ -26,7 +30,7 @@ export const SearchBar = () => {
       </div>
       <hr style={lineStyle} />
 
-      <input type="text" />
+      <input type="text" style={inputStyle} />
 
       <hr style={lineStyle} />
       <div className={styles.filter}>
