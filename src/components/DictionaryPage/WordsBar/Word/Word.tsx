@@ -20,19 +20,21 @@ export const Word = ({
 
   return (
     <div className={styles.word} key={frequencyPlace} style={style}>
-      <div className={styles.name}>
-        <label>
-          <span style={{ color: secondFontColor }}>{frequencyPlace}.</span>{" "}
-          <span style={{ color: mainFontColor }}>{name}</span>
-          <span className={styles.romaji} style={{ color: secondFontColor }}>
-            {romaji}
-          </span>
-        </label>
+      <div className={styles.topFlexContainer}>
+        <div className={styles.name}>
+          <label>
+            <span style={{ color: secondFontColor }}>{frequencyPlace}.</span>{" "}
+            <span style={{ color: mainFontColor }}>{name}</span>
+            <span className={styles.romaji} style={{ color: secondFontColor }}>
+              {romaji}
+            </span>
+          </label>
+        </div>
+        <div className={styles.partOfSpeech}>
+          <label>{partOfSpeech}</label>
+        </div>
       </div>
-      <div className={styles.partOfSpeech}>
-        <label>{partOfSpeech}</label>
-      </div>
-
+      <div className={styles.downFlexContainer}></div>
       <div className={styles.definition}>
         <label>{definition}</label>
       </div>
