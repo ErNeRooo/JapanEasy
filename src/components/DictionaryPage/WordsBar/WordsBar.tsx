@@ -1,70 +1,14 @@
 import { useEffect, useState } from "react";
 import styles from "./WordsBar.module.sass";
 import { Word } from "./Word/Word";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../../firebaseConfig";
+//import { collection, getDocs } from "firebase/firestore";
+//import { db } from "../../../firebaseConfig";
 
 export const WordsBar = () => {
-  const [words, setWords] = useState<wordTypes[]>([
-    {
-      frequencyPlace: 18,
-      name: "言う",
-      romaji: "iu",
-      partOfSpeech: "verb",
-      definition: "say, speak, talk",
-    },
-    {
-      frequencyPlace: 48,
-      name: "行く",
-      romaji: "iku",
-      partOfSpeech: "verb",
-      definition: "go; come",
-    },
-    {
-      frequencyPlace: 64,
-      name: "来る",
-      romaji: "kuru",
-      partOfSpeech: "verb",
-      definition: "come",
-    },
-    {
-      frequencyPlace: 67,
-      name: "見る",
-      romaji: "miru",
-      partOfSpeech: "verb",
-      definition: "see; look at, watch; check",
-    },
-    {
-      frequencyPlace: 58,
-      name: "人",
-      romaji: "hito",
-      partOfSpeech: "noun",
-      definition: "person, people, human being",
-    },
-    {
-      frequencyPlace: 47,
-      name: "無い",
-      romaji: "nai",
-      partOfSpeech: "i-adj.",
-      definition: "There is no . . . , no . . .",
-    },
-    {
-      frequencyPlace: 31,
-      name: "けれど",
-      romaji: "keredo",
-      partOfSpeech: "conj.",
-      definition: "though, although",
-    },
-    {
-      frequencyPlace: 794,
-      name: "繰り返す",
-      romaji: "kurikaesu",
-      partOfSpeech: "verb",
-      definition: "repeat, do over again",
-    },
-  ]);
+  const [words, setWords] = useState<wordTypes[]>();
 
   useEffect(() => {
+    /*
     const collectionReference = collection(db, "words");
 
     getDocs(collectionReference).then((snapshot) => {
@@ -72,7 +16,7 @@ export const WordsBar = () => {
 
       snapshot.forEach((doc) => {
         words.push({
-          frequencyPlace: doc.data().FrequencyNumber,
+          Rank: doc.data().FrequencyNumber,
           name: doc.data().Name,
           romaji: doc.data().Romaji,
           partOfSpeech: doc.data().PartOfSpeech,
@@ -80,33 +24,49 @@ export const WordsBar = () => {
         });
       });
 
-      words.sort((a, b) => a.frequencyPlace - b.frequencyPlace);
+      words.sort((a, b) => a.Rank - b.Rank);
 
       setWords(words);
-    });
+      */
+    fetch("./dictionaryData.json")
+      .then((res) => res.json())
+      .then((data) => {
+        const limitedData: wordTypes[] = [];
+
+        for (let i = 0; i < 50; i++) {
+          limitedData.push(data[i]);
+        }
+
+        setWords(limitedData);
+      })
+      .catch((error) => {
+        console.log("Pozdro: " + error);
+      });
   }, []);
 
   return (
     <div className={styles.WordsBar}>
-      {words.map(
-        ({ frequencyPlace, name, romaji, partOfSpeech, definition }) => (
+      {words !== undefined ? (
+        words.map(({ Rank, Lemma, Romaji, PartOfSpeech, EnglishGloss }) => (
           <Word
-            frequencyPlace={frequencyPlace}
-            name={name}
-            romaji={romaji}
-            partOfSpeech={partOfSpeech}
-            definition={definition}
+            Rank={Rank}
+            Lemma={Lemma}
+            Romaji={Romaji}
+            PartOfSpeech={PartOfSpeech}
+            EnglishGloss={EnglishGloss}
           />
-        )
+        ))
+      ) : (
+        <></>
       )}
     </div>
   );
 };
 
 interface wordTypes {
-  frequencyPlace: number;
-  name: string;
-  romaji: string;
-  partOfSpeech: string;
-  definition: string;
+  Rank: number;
+  Lemma: string;
+  Romaji: string;
+  PartOfSpeech: string;
+  EnglishGloss: string;
 }

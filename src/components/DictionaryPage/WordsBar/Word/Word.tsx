@@ -3,11 +3,11 @@ import styles from "./Word.module.sass";
 import themeContext from "../../../../context/themeContext";
 
 export const Word = ({
-  frequencyPlace,
-  name,
-  partOfSpeech,
-  definition,
-  romaji,
+  Rank,
+  Lemma,
+  PartOfSpeech,
+  EnglishGloss,
+  Romaji,
 }: IProps) => {
   const {
     themeObject: { wordColor, secondFontColor, mainFontColor },
@@ -19,33 +19,33 @@ export const Word = ({
   };
 
   return (
-    <div className={styles.word} key={frequencyPlace} style={style}>
+    <div className={styles.word} key={Rank} style={style}>
       <div className={styles.topFlexContainer}>
         <div className={styles.name}>
           <label>
-            <span style={{ color: secondFontColor }}>{frequencyPlace}.</span>{" "}
-            <span style={{ color: mainFontColor }}>{name}</span>
+            <span style={{ color: secondFontColor }}>{Rank}.</span>{" "}
+            <span style={{ color: mainFontColor }}>{Lemma}</span>
             <span className={styles.romaji} style={{ color: secondFontColor }}>
-              {romaji}
+              {Romaji}
             </span>
           </label>
         </div>
         <div className={styles.partOfSpeech}>
-          <label>{partOfSpeech}</label>
+          <label>{PartOfSpeech}</label>
         </div>
       </div>
       <div className={styles.downFlexContainer}></div>
       <div className={styles.definition}>
-        <label>{definition}</label>
+        <label>{EnglishGloss}</label>
       </div>
     </div>
   );
 };
 
 interface IProps {
-  frequencyPlace: number;
-  name: string;
-  partOfSpeech: string;
-  definition: string;
-  romaji: string;
+  Rank: number;
+  Lemma: string;
+  PartOfSpeech: string;
+  EnglishGloss: string;
+  Romaji: string;
 }
