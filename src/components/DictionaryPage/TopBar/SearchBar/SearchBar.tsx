@@ -42,7 +42,7 @@ export const SearchBar = () => {
       <input type="text" style={inputStyle} maxLength={150} />
 
       <hr style={lineStyle} />
-      <div>
+      <div className={styles.filterContainer}>
         <div
           className={styles.filter}
           onClick={() => setIsVisible(!isVisible)}
