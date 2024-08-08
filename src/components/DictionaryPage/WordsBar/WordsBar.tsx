@@ -1,7 +1,7 @@
 import { memo, useEffect, useState, useContext } from "react";
 import styles from "./WordsBar.module.sass";
 import { Word } from "./Word/Word";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
 import themeContext from "../../../context/themeContext";
 
@@ -9,13 +9,17 @@ const WordsBar = memo(() => {
   const [words, setWords] = useState<wordTypes[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const {
-    themeObject: { mainFontColor, secondFontColor },
+    themeObject: { mainFontColor },
   } = useContext(themeContext);
 
   useEffect(() => {
-    const collectionReference = collection(db, "words");
+    const wordsQuery = query(
+      collection(db, "words"),
+      orderBy("Rank", "asc"),
+      limit(50)
+    );
 
-    getDocs(collectionReference).then((snapshot) => {
+    getDocs(wordsQuery).then((snapshot) => {
       const wordsArray: wordTypes[] = [];
 
       snapshot.forEach((doc) => {
