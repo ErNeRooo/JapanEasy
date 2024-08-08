@@ -1,4 +1,4 @@
-import { WordsBar } from "./WordsBar/WordsBar.tsx";
+import WordsBar from "./WordsBar/WordsBar.tsx";
 import { TopBar } from "./TopBar/TopBar.tsx";
 import NavPanel from "./NavPanel/NavPanel.tsx";
 import isNavPanelOpenContext from "../../context/isNavPanelOpenContext.ts";
