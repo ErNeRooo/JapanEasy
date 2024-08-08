@@ -29,7 +29,7 @@ export const SearchBar = () => {
       </div>
       <hr style={lineStyle} />
 
-      <input type="text" style={inputStyle} />
+      <input type="text" style={inputStyle} maxLength={150} />
 
       <hr style={lineStyle} />
       <div className={styles.filter}>
