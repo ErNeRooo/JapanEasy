@@ -7,11 +7,10 @@ import SortOrderBySelect from "./SortOrderBySelect/SortOrderBySelect";
 
 const FilterMenu = ({ isVisible }: IProps) => {
   const {
-    themeObject: { mainFontColor, sidePanelsColor },
+    themeObject: { mainFontColor, secondFontColor, sidePanelsColor },
   } = useContext(themeContext);
 
   const FilterMenuStyle: CSSProperties = {
-    color: mainFontColor,
     background: sidePanelsColor,
     visibility: isVisible ? "visible" : "hidden",
     opacity: isVisible ? "1" : "0",
@@ -21,25 +20,44 @@ const FilterMenu = ({ isVisible }: IProps) => {
       "translateX(-40%)",
   };
 
+  const titleStyle: CSSProperties = {
+    color: mainFontColor,
+  };
+
+  const subTitleStyle: CSSProperties = {
+    color: secondFontColor,
+  };
+
+  const filterPropertyStyle: CSSProperties = {
+    color: secondFontColor,
+  };
+
   return (
     <div className={styles.FilterMenu} style={FilterMenuStyle}>
       <div className={styles.line}>
-        <span className={styles.title}>Filter</span>
+        <span className={styles.title} style={titleStyle}>
+          Filter
+        </span>
+      </div>
+      <div className={styles.line}>
+        <span style={filterPropertyStyle}>Part Of Speech </span>
       </div>
       <div className={styles.line}>
         <PartOfSpeechSelect></PartOfSpeechSelect>
       </div>
       <div className={styles.line}>
-        <span className={styles.title}>Sort</span>
+        <span className={styles.title} style={titleStyle}>
+          Sort
+        </span>
       </div>
       <div className={styles.line}>
-        <span>field</span>
+        <span style={subTitleStyle}>Field</span>
       </div>
       <div className={styles.line}>
         <SortFieldSelect></SortFieldSelect>
       </div>
       <div className={styles.line}>
-        <span>field</span>
+        <span style={subTitleStyle}>Order</span>
       </div>
       <div className={styles.line}>
         <SortOrderBySelect></SortOrderBySelect>

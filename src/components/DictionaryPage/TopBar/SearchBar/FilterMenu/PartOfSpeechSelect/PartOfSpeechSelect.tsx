@@ -17,13 +17,8 @@ const PartOfSpeechSelect = () => {
     //borderBlockEnd: "none",
   };
 
-  const filterPropertyStyle: CSSProperties = {
-    color: secondFontColor,
-  };
-
   return (
     <div className={styles.container}>
-      <span style={filterPropertyStyle}>Part Of Speech </span>
       <select
         className={styles.PartOfSpeechSelect}
         name="partOfSpeech"
