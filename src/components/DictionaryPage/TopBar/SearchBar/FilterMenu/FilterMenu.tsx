@@ -2,7 +2,7 @@ import { CSSProperties, useContext } from "react";
 import styles from "./FilterMenu.module.sass";
 import themeContext from "../../../../../context/themeContext";
 import PartOfSpeechSelect from "./PartOfSpeechSelect/PartOfSpeechSelect";
-import SortSelect from "./SortSelect/SortSelect";
+import SortFieldSelect from "./SortSelect/SortFieldSelect";
 
 const FilterMenu = ({ isVisible }: IProps) => {
   const {
@@ -32,8 +32,15 @@ const FilterMenu = ({ isVisible }: IProps) => {
         <span className={styles.title}>Sort</span>
       </div>
       <div className={styles.line}>
-        <SortSelect></SortSelect>
+        <span>field</span>
       </div>
+      <div className={styles.line}>
+        <SortFieldSelect></SortFieldSelect>
+      </div>
+      <div className={styles.line}>
+        <span>field</span>
+      </div>
+      <div className={styles.line}></div>
     </div>
   );
 };
