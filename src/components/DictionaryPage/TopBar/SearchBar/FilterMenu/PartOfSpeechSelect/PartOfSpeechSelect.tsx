@@ -5,16 +5,16 @@ import themeContext from "../../../../../../context/themeContext";
 const PartOfSpeechSelect = () => {
   const [isClicked, setIsClicked] = useState(false);
   const {
-    themeObject: { mainColor, secondFontColor },
+    themeObject: { secondColor, secondFontColor },
   } = useContext(themeContext);
   const selectStyle: CSSProperties = {
     color: secondFontColor,
-    background: mainColor,
+    background: secondColor,
   };
 
   const optionStyle: CSSProperties = {
-    borderBottom: "1px solid " + mainColor,
-    borderBlockEnd: "none",
+    //borderBottom: "1px solid " + mainColor,
+    //borderBlockEnd: "none",
   };
 
   const filterPropertyStyle: CSSProperties = {
