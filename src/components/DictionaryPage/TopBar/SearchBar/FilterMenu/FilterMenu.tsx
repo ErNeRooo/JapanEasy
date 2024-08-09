@@ -2,10 +2,11 @@ import { CSSProperties, useContext } from "react";
 import styles from "./FilterMenu.module.sass";
 import themeContext from "../../../../../context/themeContext";
 import PartOfSpeechSelect from "./PartOfSpeechSelect/PartOfSpeechSelect";
+import SortSelect from "./SortSelect/SortSelect";
 
 const FilterMenu = ({ isVisible }: IProps) => {
   const {
-    themeObject: { mainFontColor, secondFontColor, sidePanelsColor },
+    themeObject: { mainFontColor, sidePanelsColor },
   } = useContext(themeContext);
 
   const FilterMenuStyle: CSSProperties = {
@@ -29,6 +30,9 @@ const FilterMenu = ({ isVisible }: IProps) => {
       </div>
       <div className={styles.line}>
         <span className={styles.title}>Sort</span>
+      </div>
+      <div className={styles.line}>
+        <SortSelect></SortSelect>
       </div>
     </div>
   );
