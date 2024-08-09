@@ -1,15 +1,22 @@
 .PartOfSpeechSelect
+    all: unset
+
     max-width: 3rem
     max-height: 3rem
 
-    select
-        all: unset
-
-        border-radius: 1rem
-        padding: 0.5rem
-        border: none
-        pointer-events: all
+    border-radius: 1rem
+    box-sizing: border-box
+    border: none
+    pointer-events: all
 
     option
         display: block
         text-align: center
+
+.container
+    width: 100%
+
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center

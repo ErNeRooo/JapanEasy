@@ -34,12 +34,8 @@ const WordsBar = memo(() => {
 
       wordsArray.sort((a, b) => a.Rank - b.Rank);
 
-      console.log("pozdro");
-
       setWords(wordsArray);
       setIsLoading(false);
-
-      console.log("still pozdro");
     });
   }, []);
 

@@ -5,7 +5,7 @@ import PartOfSpeechSelect from "./PartOfSpeechSelect/PartOfSpeechSelect";
 
 const FilterMenu = ({ isVisible }: IProps) => {
   const {
-    themeObject: { mainFontColor, sidePanelsColor },
+    themeObject: { mainFontColor, secondFontColor, sidePanelsColor },
   } = useContext(themeContext);
 
   const FilterMenuStyle: CSSProperties = {
@@ -13,6 +13,7 @@ const FilterMenu = ({ isVisible }: IProps) => {
     background: sidePanelsColor,
     visibility: isVisible ? "visible" : "hidden",
     opacity: isVisible ? "1" : "0",
+    pointerEvents: isVisible ? "auto" : "none",
     transform:
       (isVisible ? "translateY(3rem)" : "translateY(2rem)") +
       "translateX(-40%)",
@@ -20,7 +21,15 @@ const FilterMenu = ({ isVisible }: IProps) => {
 
   return (
     <div className={styles.FilterMenu} style={FilterMenuStyle}>
-      <PartOfSpeechSelect></PartOfSpeechSelect>
+      <div className={styles.line}>
+        <span className={styles.title}>Filter</span>
+      </div>
+      <div className={styles.line}>
+        <PartOfSpeechSelect></PartOfSpeechSelect>
+      </div>
+      <div className={styles.line}>
+        <span className={styles.title}>Sort</span>
+      </div>
     </div>
   );
 };
