@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import styles from "./SortFieldSelect.module.sass";
+import styles from "./SortOrderBySelect.module.sass";
 import themeContext from "../../../../../../context/themeContext";
 import { CSSProperties } from "react";
 
-const SortFieldSelect = () => {
+const SortOrderBySelect = () => {
   const {
     themeObject: { secondColor, secondFontColor },
   } = useContext(themeContext);
@@ -18,15 +18,14 @@ const SortFieldSelect = () => {
       <select
         style={selectStyle}
         className={styles.select}
-        name="fieldSelect"
-        id="fieldSelect"
+        name="orderBySelect"
+        id="orderBySelect"
       >
-        <option value="rank">Rank</option>
-        <option value="lemma">Lemma</option>
-        <option value="romaji">Romaji</option>
+        <option value="asc">ascending</option>
+        <option value="desc">descending</option>
       </select>
     </div>
   );
 };
 
-export default SortFieldSelect;
+export default SortOrderBySelect;

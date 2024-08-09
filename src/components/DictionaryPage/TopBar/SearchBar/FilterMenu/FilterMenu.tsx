@@ -3,6 +3,7 @@ import styles from "./FilterMenu.module.sass";
 import themeContext from "../../../../../context/themeContext";
 import PartOfSpeechSelect from "./PartOfSpeechSelect/PartOfSpeechSelect";
 import SortFieldSelect from "./SortSelect/SortFieldSelect";
+import SortOrderBySelect from "./SortOrderBySelect/SortOrderBySelect";
 
 const FilterMenu = ({ isVisible }: IProps) => {
   const {
@@ -40,7 +41,9 @@ const FilterMenu = ({ isVisible }: IProps) => {
       <div className={styles.line}>
         <span>field</span>
       </div>
-      <div className={styles.line}></div>
+      <div className={styles.line}>
+        <SortOrderBySelect></SortOrderBySelect>
+      </div>
     </div>
   );
 };
