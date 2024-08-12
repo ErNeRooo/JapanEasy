@@ -4,6 +4,7 @@ import { Word } from "./Word/Word";
 import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
 import themeContext from "../../../context/themeContext";
+import wordTypes from "../../../types/wordTypes";
 
 const WordsBar = memo(() => {
   const [words, setWords] = useState<wordTypes[]>([]);
@@ -65,13 +66,5 @@ const WordsBar = memo(() => {
     </div>
   );
 });
-
-interface wordTypes {
-  Rank: number;
-  Lemma: string;
-  Romaji: string;
-  PartOfSpeech: string;
-  EnglishGloss: string;
-}
 
 export default WordsBar;
