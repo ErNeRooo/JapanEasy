@@ -4,6 +4,7 @@ import { firebaseConfig } from "./firebaseConfig";
 import firebase from "firebase/compat/app";
 import themeContext from "./context/themeContext";
 import { useState } from "react";
+import Seeder from "./components/DictionaryPage/Seeder";
 
 function App() {
   const [theme, setTheme] = useState<themeTypes>({
@@ -19,9 +20,15 @@ function App() {
     lineColor: "#4c4c4c",
   });
 
+  const isSeederEnabled = false;
+
   document.documentElement.style.setProperty("--bodyColor", theme.mainColor);
 
   firebase.initializeApp(firebaseConfig);
+
+  if (isSeederEnabled) {
+    Seeder();
+  }
 
   return (
     <themeContext.Provider value={{ themeObject: theme, setter: setTheme }}>
