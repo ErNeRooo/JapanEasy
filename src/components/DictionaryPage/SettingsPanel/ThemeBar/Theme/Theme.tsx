@@ -1,18 +1,18 @@
 import styles from "./Theme.module.sass";
 import themes from "../../../../../assets/themes.json";
 import { useContext } from "react";
-import themeContext from "../../../../../context/themeContext";
-import { themeTypes } from "../../../../../App";
+import themeContext from "../../../../../context/themeStateContext";
+import themeTypes from "../../../../../types/themeTypes";
 
-const Theme = ({ name, backgroundColor }: IProps) => {
-  const themeObject = useContext(themeContext);
+const Theme = ({ name, backgroundColor }: Props) => {
+  const [, setTheme] = useContext(themeContext);
 
   const handleOnClick = () => {
     const themeToChange: themeTypes | undefined = themes.find(
       (item) => item.name === name
     );
 
-    if (themeToChange !== undefined) themeObject.setter(themeToChange);
+    if (themeToChange !== undefined) setTheme(themeToChange);
   };
 
   return (
@@ -24,7 +24,7 @@ const Theme = ({ name, backgroundColor }: IProps) => {
   );
 };
 
-interface IProps {
+interface Props {
   name: string;
   backgroundColor: string;
 }

@@ -1,13 +1,10 @@
 import { createContext } from "react";
-import { themeTypes } from "../App";
+import themeTypes from "../types/themeTypes";
 
-interface themeContextTypes {
-  themeObject: themeTypes;
-  setter: (state: themeTypes) => void;
-}
-
-const themeContext = createContext<themeContextTypes>({
-  themeObject: {
+const themeStateContext = createContext<
+  [themeTypes, (state: themeTypes) => void]
+>([
+  {
     name: "dark",
     sidePanelsColor: "#212121",
     mainColor: "#2D2D2D",
@@ -19,7 +16,7 @@ const themeContext = createContext<themeContextTypes>({
     iconsColor: "filter: invert(100%) brightness(200%)",
     lineColor: "#4c4c4c",
   },
-  setter: () => {},
-});
+  () => {},
+]);
 
-export default themeContext;
+export default themeStateContext;

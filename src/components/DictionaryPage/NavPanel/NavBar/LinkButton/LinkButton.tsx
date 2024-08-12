@@ -1,25 +1,23 @@
-import { useContext } from "react";
+import { CSSProperties, useContext } from "react";
 import styles from "./LinkButton.module.sass";
-import themeContext from "../../../../../context/themeContext";
+import themeContext from "../../../../../context/themeStateContext";
 
-const LinkButton = ({ children }: IProps) => {
-  const {
-    themeObject: { mainFontColor, sidePanelsColor },
-  } = useContext(themeContext);
+const LinkButton = ({ children }: Props) => {
+  const [{ mainFontColor, sidePanelsColor }] = useContext(themeContext);
 
-  const style = {
+  const linkButtonStyle: CSSProperties = {
     color: mainFontColor,
     background: sidePanelsColor,
   };
 
   return (
-    <div className={styles.LinkButton} style={style}>
+    <div className={styles.LinkButton} style={linkButtonStyle}>
       {children}
     </div>
   );
 };
 
-interface IProps {
+interface Props {
   children: string;
 }
 

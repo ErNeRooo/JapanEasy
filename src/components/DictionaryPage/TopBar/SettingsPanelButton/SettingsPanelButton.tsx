@@ -1,34 +1,28 @@
-import { useContext } from "react";
-import isSettingsPanelOpenContext from "../../../../context/isSettingsPanelOpenContext";
+import { CSSProperties, useContext } from "react";
+import isSettingsPanelOpenStateContext from "../../../../context/isSettingsPanelOpenStateContext";
 import styles from "./SettingsPanelButton.module.sass";
 import image from "../../../../assets/menu.svg";
-import themeContext from "../../../../context/themeContext";
+import themeContext from "../../../../context/themeStateContext";
 
 export const SettingsPanelButton = () => {
-  const isSettingsPanelOpenObject = useContext(isSettingsPanelOpenContext);
-  const {
-    themeObject: { iconsColor },
-  } = useContext(themeContext);
+  const [isOpen, setIsOpen] = useContext(isSettingsPanelOpenStateContext);
+  const [{ iconsColor }] = useContext(themeContext);
 
-  const HandleOnClick = () => {
-    isSettingsPanelOpenObject.setIsOpen(!isSettingsPanelOpenObject.isOpen);
-  };
-
-  const style = {
+  const imgStyle: CSSProperties = {
     filter: iconsColor,
   };
 
-  return isSettingsPanelOpenObject.isOpen ? (
+  return isOpen ? (
     <div
       className={styles.Panel + " " + styles.Clicked}
-      onClick={HandleOnClick}
+      onClick={() => setIsOpen(!isOpen)}
       style={{ transform: "rotate(180deg)" }}
     >
-      <img src={image} style={style} />
+      <img src={image} style={imgStyle} />
     </div>
   ) : (
-    <div className={styles.Panel} onClick={HandleOnClick}>
-      <img src={image} style={style} />
+    <div className={styles.Panel} onClick={() => setIsOpen(!isOpen)}>
+      <img src={image} style={imgStyle} />
     </div>
   );
 };

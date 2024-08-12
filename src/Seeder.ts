@@ -1,5 +1,5 @@
 import { addDoc, collection, where, query, getDocs } from "firebase/firestore";
-import { db } from "../../firebaseConfig";
+import { db } from "./firebaseConfig";
 
 const Seeder = async (startIndex: number = 1) => {
   await fetch("../../../public/dictionaryData.json")

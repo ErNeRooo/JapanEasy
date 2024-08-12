@@ -1,20 +1,14 @@
 import { CSSProperties, useContext, useState } from "react";
 import styles from "./PartOfSpeechSelect.module.sass";
-import themeContext from "../../../../../../context/themeContext";
+import themeContext from "../../../../../../context/themeStateContext";
 
 const PartOfSpeechSelect = () => {
   const [isClicked, setIsClicked] = useState(false);
-  const {
-    themeObject: { secondColor, secondFontColor },
-  } = useContext(themeContext);
+  const [{ secondColor, secondFontColor }] = useContext(themeContext);
+
   const selectStyle: CSSProperties = {
     color: secondFontColor,
     background: secondColor,
-  };
-
-  const optionStyle: CSSProperties = {
-    //borderBottom: "1px solid " + mainColor,
-    //borderBlockEnd: "none",
   };
 
   return (
@@ -28,63 +22,25 @@ const PartOfSpeechSelect = () => {
           setIsClicked(!isClicked);
         }}
       >
-        <option style={optionStyle} value="">
-          {isClicked ? "▲" : "▼"}
-        </option>
-        <option style={optionStyle} value="adn.">
-          adn. | adnominal
-        </option>
-        <option style={optionStyle} value="adv.">
-          adv. | adverb
-        </option>
-        <option style={optionStyle} value="aux.">
-          aux. | auxiliary
-        </option>
-        <option style={optionStyle} value="conj.">
-          conj. | conjunction
-        </option>
-        <option style={optionStyle} value="cp.">
-          cp. | compound
-        </option>
-        <option style={optionStyle} value="i-adj.">
-          i-adj. | i-adjective
-        </option>
-        <option style={optionStyle} value="interj.">
-          interj. | interjection
-        </option>
-        <option style={optionStyle} value="n.">
-          n. | noun
-        </option>
-        <option style={optionStyle} value="na-adj.">
-          na-adj. | na-adjective
-        </option>
-        <option style={optionStyle} value="num.">
-          num. | numeral
-        </option>
-        <option style={optionStyle} value="p.">
-          p. | particle
-        </option>
-        <option style={optionStyle} value="p. case">
-          p. case | case particle
-        </option>
-        <option style={optionStyle} value="p. conj.">
-          p. conj. | conjunctive particle
-        </option>
-        <option style={optionStyle} value="p. disc.">
-          p. disc. | discourse particle
-        </option>
-        <option style={optionStyle} value="prefix">
-          prefix | prefix
-        </option>
-        <option style={optionStyle} value="pron.">
-          pron. | pronoun
-        </option>
-        <option style={optionStyle} value="suffix">
-          suffix | suffix
-        </option>
-        <option style={optionStyle} value="v.">
-          v. | verb
-        </option>
+        <option value="">{isClicked ? "▲" : "▼"}</option>
+        <option value="adn.">adn. | adnominal</option>
+        <option value="adv.">adv. | adverb</option>
+        <option value="aux.">aux. | auxiliary</option>
+        <option value="conj.">conj. | conjunction</option>
+        <option value="cp.">cp. | compound</option>
+        <option value="i-adj.">i-adj. | i-adjective</option>
+        <option value="interj.">interj. | interjection</option>
+        <option value="n.">n. | noun</option>
+        <option value="na-adj.">na-adj. | na-adjective</option>
+        <option value="num.">num. | numeral</option>
+        <option value="p.">p. | particle</option>
+        <option value="p. case">p. case | case particle</option>
+        <option value="p. conj.">p. conj. | conjunctive particle</option>
+        <option value="p. disc.">p. disc. | discourse particle</option>
+        <option value="prefix">prefix | prefix</option>
+        <option value="pron.">pron. | pronoun</option>
+        <option value="suffix">suffix | suffix</option>
+        <option value="v.">v. | verb</option>
       </select>
     </div>
   );

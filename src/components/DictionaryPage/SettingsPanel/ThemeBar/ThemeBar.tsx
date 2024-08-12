@@ -1,20 +1,18 @@
 import styles from "./ThemeBar.module.sass";
 import Theme from "./Theme/Theme";
 import themes from "../../../../assets/themes.json";
-import { useContext } from "react";
-import themeContext from "../../../../context/themeContext";
+import { CSSProperties, useContext } from "react";
+import themeContext from "../../../../context/themeStateContext";
 
 const ThemeBar = () => {
-  const {
-    themeObject: { mainColor },
-  } = useContext(themeContext);
+  const [{ mainColor }] = useContext(themeContext);
 
-  const style = {
+  const themeBarStyle: CSSProperties = {
     background: mainColor,
   };
 
   return (
-    <div className={styles.ThemeBar} style={style}>
+    <div className={styles.ThemeBar} style={themeBarStyle}>
       {themes.map(({ name, iconColor }) => {
         return <Theme name={name} backgroundColor={iconColor}></Theme>;
       })}

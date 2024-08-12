@@ -1,21 +1,19 @@
 import styles from "./SettingsPanel.module.sass";
-import { useContext } from "react";
-import isOpenContext from "../../../context/isSettingsPanelOpenContext";
+import { CSSProperties, useContext } from "react";
+import isOpenContext from "../../../context/isSettingsPanelOpenStateContext";
 import ThemeBar from "./ThemeBar/ThemeBar";
-import themeContext from "../../../context/themeContext";
+import themeContext from "../../../context/themeStateContext";
 
 const SettingsPanel = () => {
-  const isOpenObject = useContext(isOpenContext);
-  const {
-    themeObject: { sidePanelsColor },
-  } = useContext(themeContext);
+  const [isOpen] = useContext(isOpenContext);
+  const [{ sidePanelsColor }] = useContext(themeContext);
 
-  const style = isOpenObject.isOpen
+  const settingsPanelStyle: CSSProperties = isOpen
     ? { background: sidePanelsColor, transform: "translateX(-100%)" }
     : { background: sidePanelsColor, transform: "translateX(0)" };
 
   return (
-    <div className={styles.SettingsPanel} style={style}>
+    <div className={styles.SettingsPanel} style={settingsPanelStyle}>
       <ThemeBar></ThemeBar>
     </div>
   );

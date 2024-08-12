@@ -2,9 +2,10 @@ import "./App.module.sass";
 import { DictionaryPage } from "./components/DictionaryPage/DictionaryPage";
 import { firebaseConfig } from "./firebaseConfig";
 import firebase from "firebase/compat/app";
-import themeContext from "./context/themeContext";
+import themeContext from "./context/themeStateContext";
 import { useState } from "react";
-import Seeder from "./components/DictionaryPage/Seeder";
+import Seeder from "./Seeder";
+import themeTypes from "./types/themeTypes";
 
 function App() {
   const [theme, setTheme] = useState<themeTypes>({
@@ -31,23 +32,10 @@ function App() {
   }
 
   return (
-    <themeContext.Provider value={{ themeObject: theme, setter: setTheme }}>
+    <themeContext.Provider value={[theme, setTheme]}>
       <DictionaryPage></DictionaryPage>
     </themeContext.Provider>
   );
-}
-
-export interface themeTypes {
-  name: string;
-  sidePanelsColor: string;
-  mainColor: string;
-  secondColor: string;
-  searchBarColor: string;
-  wordColor: string;
-  mainFontColor: string;
-  secondFontColor: string;
-  iconsColor: string;
-  lineColor: string;
 }
 
 export default App;

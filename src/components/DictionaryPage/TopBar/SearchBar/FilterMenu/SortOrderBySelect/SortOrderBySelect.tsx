@@ -1,12 +1,10 @@
 import { useContext } from "react";
 import styles from "./SortOrderBySelect.module.sass";
-import themeContext from "../../../../../../context/themeContext";
+import themeContext from "../../../../../../context/themeStateContext";
 import { CSSProperties } from "react";
 
 const SortOrderBySelect = () => {
-  const {
-    themeObject: { secondColor, secondFontColor },
-  } = useContext(themeContext);
+  const [{ secondColor, secondFontColor }] = useContext(themeContext);
 
   const selectStyle: CSSProperties = {
     color: secondFontColor,

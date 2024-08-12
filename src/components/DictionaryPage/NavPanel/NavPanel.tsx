@@ -1,16 +1,14 @@
 import styles from "./NavPanel.module.sass";
-import { useContext } from "react";
-import isOpenContext from "../../../context/isNavPanelOpenContext";
-import themeContext from "../../../context/themeContext";
+import { CSSProperties, useContext } from "react";
+import isOpenContext from "../../../context/isNavPanelOpenStateContext";
+import themeContext from "../../../context/themeStateContext";
 import NavBar from "./NavBar/NavBar";
 
 const NavPanel = () => {
-  const isOpenObject = useContext(isOpenContext);
-  const {
-    themeObject: { sidePanelsColor },
-  } = useContext(themeContext);
+  const [isOpen] = useContext(isOpenContext);
+  const [{ sidePanelsColor }] = useContext(themeContext);
 
-  const inLineStyle = isOpenObject.isOpen
+  const inLineStyle: CSSProperties = isOpen
     ? { backgroundColor: sidePanelsColor, transform: "translateX(100%)" }
     : { backgroundColor: sidePanelsColor, transform: "translateX(0)" };
 

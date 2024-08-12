@@ -1,25 +1,20 @@
-import { useContext } from "react";
+import { CSSProperties, useContext } from "react";
 import styles from "./NavBar.module.sass";
-import themeContext from "../../../../context/themeContext";
+import themeContext from "../../../../context/themeStateContext";
 import LinkButton from "./LinkButton/LinkButton";
+import linkListTypes from "../../../../types/linkListTypes";
 
 const linkList: linkListTypes[] = [{ name: "Home" }, { name: "About" }];
 
-interface linkListTypes {
-  name: string;
-}
-
 const NavBar = () => {
-  const {
-    themeObject: { secondColor },
-  } = useContext(themeContext);
+  const [{ secondColor }] = useContext(themeContext);
 
-  const style = {
+  const navBarStyle: CSSProperties = {
     background: secondColor,
   };
 
   return (
-    <div className={styles.NavBar} style={style}>
+    <div className={styles.NavBar} style={navBarStyle}>
       {linkList.map(({ name }) => {
         return <LinkButton>{name}</LinkButton>;
       })}

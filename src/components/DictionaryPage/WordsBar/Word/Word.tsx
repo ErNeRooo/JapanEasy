@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { CSSProperties, useContext } from "react";
 import styles from "./Word.module.sass";
-import themeContext from "../../../../context/themeContext";
+import themeContext from "../../../../context/themeStateContext";
 
 export const Word = ({
   Rank,
@@ -8,18 +8,17 @@ export const Word = ({
   PartOfSpeech,
   EnglishGloss,
   Romaji,
-}: IProps) => {
-  const {
-    themeObject: { wordColor, secondFontColor, mainFontColor },
-  } = useContext(themeContext);
+}: Props) => {
+  const [{ wordColor, secondFontColor, mainFontColor }] =
+    useContext(themeContext);
 
-  const style = {
+  const wordStyle: CSSProperties = {
     background: wordColor,
     color: secondFontColor,
   };
 
   return (
-    <div className={styles.word} key={Rank} style={style}>
+    <div className={styles.word} key={Rank} style={wordStyle}>
       <div className={styles.topFlexContainer}>
         <div className={styles.name}>
           <label>
@@ -42,7 +41,7 @@ export const Word = ({
   );
 };
 
-interface IProps {
+interface Props {
   Rank: number;
   Lemma: string;
   PartOfSpeech: string;

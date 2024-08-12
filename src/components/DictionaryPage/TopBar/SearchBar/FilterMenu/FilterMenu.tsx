@@ -1,14 +1,13 @@
 import { CSSProperties, useContext } from "react";
 import styles from "./FilterMenu.module.sass";
-import themeContext from "../../../../../context/themeContext";
+import themeContext from "../../../../../context/themeStateContext";
 import PartOfSpeechSelect from "./PartOfSpeechSelect/PartOfSpeechSelect";
 import SortFieldSelect from "./SortSelect/SortFieldSelect";
 import SortOrderBySelect from "./SortOrderBySelect/SortOrderBySelect";
 
-const FilterMenu = ({ isVisible }: IProps) => {
-  const {
-    themeObject: { mainFontColor, secondFontColor, sidePanelsColor },
-  } = useContext(themeContext);
+const FilterMenu = ({ isVisible }: Props) => {
+  const [{ mainFontColor, secondFontColor, sidePanelsColor }] =
+    useContext(themeContext);
 
   const FilterMenuStyle: CSSProperties = {
     background: sidePanelsColor,
@@ -66,7 +65,7 @@ const FilterMenu = ({ isVisible }: IProps) => {
   );
 };
 
-interface IProps {
+interface Props {
   isVisible: boolean;
 }
 

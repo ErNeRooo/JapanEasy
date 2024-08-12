@@ -1,17 +1,15 @@
-import { memo, useEffect, useState, useContext } from "react";
+import { memo, useEffect, useState, useContext, CSSProperties } from "react";
 import styles from "./WordsBar.module.sass";
 import { Word } from "./Word/Word";
 import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
 import { db } from "../../../firebaseConfig";
-import themeContext from "../../../context/themeContext";
+import themeContext from "../../../context/themeStateContext";
 import wordTypes from "../../../types/wordTypes";
 
 const WordsBar = memo(() => {
   const [words, setWords] = useState<wordTypes[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const {
-    themeObject: { mainFontColor },
-  } = useContext(themeContext);
+  const [{ mainFontColor }] = useContext(themeContext);
 
   useEffect(() => {
     const wordsQuery = query(
@@ -40,7 +38,7 @@ const WordsBar = memo(() => {
     });
   }, []);
 
-  const loadingStyle = {
+  const loadingStyle: CSSProperties = {
     borderRightColor: mainFontColor,
   };
 
