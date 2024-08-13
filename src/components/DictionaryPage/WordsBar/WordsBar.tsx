@@ -1,16 +1,23 @@
-import { memo, useContext, CSSProperties } from "react";
+import { memo, useContext, CSSProperties, useEffect } from "react";
 import styles from "./WordsBar.module.sass";
 import { Word } from "./Word/Word";
 import themeContext from "../../../context/themeStateContext";
-import useGetData from "../../../hooks/useGetData";
+import useSetWordsData from "../../../hooks/useSetWordsData";
+import SeeMoreButton from "./SeeMoreButton/SeeMoreButton";
 
 const WordsBar = memo(() => {
   const [{ mainFontColor }] = useContext(themeContext);
-  const { words, isLoading } = useGetData();
+  const { words, setWordsData, isLoading, resultError } = useSetWordsData();
 
   const loadingStyle: CSSProperties = {
     borderRightColor: mainFontColor,
   };
+
+  useEffect(() => {
+    setWordsData();
+  }, []);
+
+  console.log(resultError);
 
   if (isLoading) {
     return (
@@ -31,6 +38,8 @@ const WordsBar = memo(() => {
           EnglishGloss={EnglishGloss}
         />
       ))}
+
+      <SeeMoreButton setWords={setWordsData} />
     </div>
   );
 });
