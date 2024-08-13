@@ -13,7 +13,7 @@ import { db } from "../firebaseConfig";
 const useSetWordsData = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [words, setWords] = useState<wordTypes[]>([]);
-  const [resultError, setResultError] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   let countSetWordsDataTriggers = 0;
 
   const setWordsData = useCallback(() => {
@@ -50,11 +50,12 @@ const useSetWordsData = () => {
         countSetWordsDataTriggers++;
       })
       .catch((error) => {
-        setResultError(error);
+        setErrorMessage(error.message);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return { words, setWordsData, isLoading, resultError };
+  return { words, setWordsData, isLoading, errorMessage };
 };
 
 export default useSetWordsData;

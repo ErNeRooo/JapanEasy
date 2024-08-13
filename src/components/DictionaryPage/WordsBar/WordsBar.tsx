@@ -7,17 +7,34 @@ import SeeMoreButton from "./SeeMoreButton/SeeMoreButton";
 
 const WordsBar = memo(() => {
   const [{ mainFontColor }] = useContext(themeContext);
-  const { words, setWordsData, isLoading, resultError } = useSetWordsData();
+  const { words, setWordsData, isLoading, errorMessage } = useSetWordsData();
 
   const loadingStyle: CSSProperties = {
     borderRightColor: mainFontColor,
+  };
+
+  const errorStyle: CSSProperties = {
+    color: mainFontColor,
   };
 
   useEffect(() => {
     setWordsData();
   }, []);
 
-  console.log(resultError);
+  if (errorMessage) {
+    console.log(errorMessage);
+
+    return (
+      <div className={styles.WordsBar}>
+        <div className={styles.error} style={errorStyle}>
+          {errorMessage === "Quota exceeded."
+            ? "Too many requests. Please try again later."
+            : errorMessage}
+          <span>:/</span>
+        </div>
+      </div>
+    );
+  }
 
   if (isLoading) {
     return (
@@ -41,6 +58,7 @@ const WordsBar = memo(() => {
           />
         )
       )}
+      <SeeMoreButton setWords={setWordsData} />
     </div>
   );
 });

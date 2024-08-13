@@ -13,8 +13,10 @@ const SeeMoreButton = ({ setWords }: Props) => {
     color: mainFontColor,
   };
 
-  const handleClick = (): void => {};
-  setWords();
+  const handleClick = (): void => {
+    setWords();
+  };
+
   return (
     <div
       className={styles.SeeMoreButton}
