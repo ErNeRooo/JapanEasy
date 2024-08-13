@@ -15,8 +15,8 @@ const NavBar = () => {
 
   return (
     <div className={styles.NavBar} style={navBarStyle}>
-      {linkList.map(({ name }) => {
-        return <LinkButton>{name}</LinkButton>;
+      {linkList.map(({ name }, index) => {
+        return <LinkButton key={name + index}>{name}</LinkButton>;
       })}
     </div>
   );
