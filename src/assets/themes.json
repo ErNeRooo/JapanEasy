@@ -10,7 +10,7 @@
     "mainFontColor": "white",
     "secondFontColor": "#BFBFBF",
     "iconsColor": "brightness(100%)",
-    "lineColor": "green"
+    "lineColor": "#4c4c4c"
   },
   {
     "name": "light",
