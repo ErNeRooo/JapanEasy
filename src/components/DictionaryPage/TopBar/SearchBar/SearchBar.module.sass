@@ -1,6 +1,6 @@
 .searchBar
     max-width: 37rem
-    min-width: 20rem
+    min-width: 10rem
     width: 100%
     height: 2.5rem
 
@@ -11,6 +11,7 @@
     display: flex
     justify-content: space-evenly
     flex-direction: row
+    flex-grow: 1
     flex-shrink: 2
 
     margin-right: auto
@@ -18,7 +19,7 @@
 
     input
         all: unset
-        width: 30rem
+        width: 100%
 
         font-size: 1.2rem
         font-weight: 300
@@ -28,9 +29,9 @@
         float: left
 
 .searchIcon
-    flex-grow: 1
 
     min-width: 2.5rem
+    max-width: 2.5rem
     height: 2.5rem
 
     display: flex
@@ -49,12 +50,13 @@
 
 
 .filter
+    min-width: 2.5rem
+    max-width: 2.5rem
+    height: 2.5rem
+
     display: flex
     justify-content: space-around
-    flex-grow: 1
 
-
-    float: left
     cursor: pointer
     user-select: none
 

@@ -13,8 +13,14 @@ const ThemeBar = () => {
 
   return (
     <div className={styles.ThemeBar} style={themeBarStyle}>
-      {themes.map(({ name, iconColor }) => {
-        return <Theme name={name} backgroundColor={iconColor}></Theme>;
+      {themes.map(({ name, iconColor }, index) => {
+        return (
+          <Theme
+            name={name}
+            backgroundColor={iconColor}
+            key={name + index}
+          ></Theme>
+        );
       })}
     </div>
   );

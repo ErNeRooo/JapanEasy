@@ -29,17 +29,18 @@ const WordsBar = memo(() => {
 
   return (
     <div className={styles.WordsBar}>
-      {words.map(({ Rank, Lemma, Romaji, PartOfSpeech, EnglishGloss }) => (
-        <Word
-          Rank={Rank}
-          Lemma={Lemma}
-          Romaji={Romaji}
-          PartOfSpeech={PartOfSpeech}
-          EnglishGloss={EnglishGloss}
-        />
-      ))}
-
-      <SeeMoreButton setWords={setWordsData} />
+      {words.map(
+        ({ Rank, Lemma, Romaji, PartOfSpeech, EnglishGloss }, index) => (
+          <Word
+            Rank={Rank}
+            Lemma={Lemma}
+            Romaji={Romaji}
+            PartOfSpeech={PartOfSpeech}
+            EnglishGloss={EnglishGloss}
+            key={index + Romaji}
+          />
+        )
+      )}
     </div>
   );
 });

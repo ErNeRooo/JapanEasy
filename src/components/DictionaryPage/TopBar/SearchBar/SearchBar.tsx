@@ -24,7 +24,7 @@ export const SearchBar = () => {
       (isHover ? "rotate(0deg)" : "rotate(180deg)"),
   };
   const lineStyle: CSSProperties = {
-    borderColor: lineColor,
+    border: "1px solid " + lineColor,
   };
   const inputStyle: CSSProperties = {
     color: mainFontColor,
