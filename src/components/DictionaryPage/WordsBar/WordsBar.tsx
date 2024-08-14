@@ -19,6 +19,7 @@ const WordsBar = memo(() => {
 
   useEffect(() => {
     setWordsData();
+    // eslint-disable-next-line
   }, []);
 
   if (errorMessage) {
