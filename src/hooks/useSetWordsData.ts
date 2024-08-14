@@ -3,66 +3,78 @@ import {
   getDocs,
   limit,
   orderBy,
+  Query,
   query,
   where,
 } from "firebase/firestore";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import wordTypes from "../types/wordTypes";
 import { db } from "../firebaseConfig";
 import searchContext from "../context/searchContext";
 
+let countSeeMoreTriggers = 0;
 const useSetWordsData = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [words, setWords] = useState<wordTypes[]>([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const [{ searchPrompt, partOfSpeech, field, order }] =
     useContext(searchContext);
-  let countSetWordsDataTriggers = 0;
 
-  const setWordsData = useCallback(() => {
-    const wordsDataQuery =
-      countSetWordsDataTriggers === 0
-        ? query(collection(db, "wordss"), orderBy("Rank", "asc"), limit(50))
+  const setWordsData = () => {
+    const wordsQuery =
+      countSeeMoreTriggers === 0
+        ? query(collection(db, "words"), orderBy("Rank", "asc"), limit(50))
         : query(
             collection(db, "words"),
             orderBy("Rank", "asc"),
-            where("Rank", ">", countSetWordsDataTriggers * 50),
+            where("Rank", ">", countSeeMoreTriggers * 50),
             limit(50)
           );
 
-    getDocs(wordsDataQuery)
-      .then((snapshot) => {
-        if (snapshot.empty) {
-          throw new Error("No documents found");
-        }
-
-        const wordsDataArray: wordTypes[] = [];
-
-        snapshot.forEach((doc) => {
-          wordsDataArray.push({
-            Rank: doc.data().Rank,
-            Lemma: doc.data().Lemma,
-            Romaji: doc.data().Romaji,
-            PartOfSpeech: doc.data().PartOfSpeech,
-            EnglishGloss: doc.data().EnglishGloss,
-          });
-        });
-
-        setIsLoading(false);
-        setWords((prev) => [...prev, ...wordsDataArray]);
-        countSetWordsDataTriggers++;
-      })
-      .catch((error) => {
-        setErrorMessage(error.message);
+    if (searchPrompt === "") {
+      getWords(wordsQuery).then((wordsArray) => {
+        setWords((prev) => [...prev, ...wordsArray]);
+        countSeeMoreTriggers++;
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    }
+  };
 
+  const getWords = async (wordsQuery: Query): Promise<wordTypes[]> => {
+    return new Promise<wordTypes[]>((resolve, reject) => {
+      const wordsArray: wordTypes[] = [];
+
+      getDocs(wordsQuery)
+        .then((snapshot) => {
+          if (snapshot.empty) {
+            reject();
+            throw new Error("No documents found");
+          }
+
+          snapshot.forEach((doc) => {
+            wordsArray.push({
+              Rank: doc.data().Rank,
+              Lemma: doc.data().Lemma,
+              Romaji: doc.data().Romaji,
+              PartOfSpeech: doc.data().PartOfSpeech,
+              EnglishGloss: doc.data().EnglishGloss,
+            });
+          });
+        })
+        .catch((error) => {
+          setErrorMessage(error.message);
+        })
+        .finally(() => {
+          setIsLoading(false);
+          resolve(wordsArray);
+        });
+    });
+  };
+  /*
   useEffect(() => {
     console.log(searchPrompt, " ", partOfSpeech, " ", field, " ", order);
     // eslint-disable-next-line
-  }, [searchPrompt, partOfSpeech, field, order]);
-
+  }, [searchPrompt, partOfSpeech, field, order, words]);
+*/
   return { words, setWordsData, isLoading, errorMessage };
 };
 
