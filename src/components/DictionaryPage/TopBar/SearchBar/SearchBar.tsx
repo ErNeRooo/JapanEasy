@@ -6,6 +6,7 @@ import themeContext from "../../../../context/themeStateContext";
 import FilterMenu from "./FilterMenu/FilterMenu";
 import searchContext from "../../../../context/searchContext";
 import searchTypes from "../../../../types/searchTypes";
+import wordsDataContext from "../../../../context/wordsDataContext";
 
 export const SearchBar = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,6 +14,7 @@ export const SearchBar = () => {
   const [{ searchBarColor, iconsColor, lineColor, mainFontColor }] =
     useContext(themeContext);
   const [search, setSearch] = useContext(searchContext);
+  const [, setWordsData] = useContext(wordsDataContext);
 
   const backgroundStyle: CSSProperties = {
     background: searchBarColor,
@@ -40,9 +42,17 @@ export const SearchBar = () => {
 
     setSearch(newSearchObject);
   };
+
+  const handleSearchClick = (): void => {
+    if (search.searchPrompt !== "") {
+      console.log("Searching for: " + search.searchPrompt);
+      setWordsData();
+    }
+  };
+
   return (
     <div className={styles.searchBar} style={backgroundStyle}>
-      <div className={styles.searchIcon}>
+      <div className={styles.searchIcon} onClick={handleSearchClick}>
         <img src={searchIcon} style={searchIconStyle} />
       </div>
       <hr style={lineStyle} />

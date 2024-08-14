@@ -7,10 +7,13 @@ import { useState } from "react";
 import SettingsPanel from "./SettingsPanel/SettingsPanel.tsx";
 import searchContext from "../../context/searchContext.ts";
 import searchTypes from "../../types/searchTypes.ts";
+import wordsDataContext from "../../context/wordsDataContext.ts";
+import useSetWordsData from "../../hooks/useSetWordsData.ts";
 
 export const DictionaryPage = () => {
   const [isNavPanelOpen, setIsNavPanelOpen] = useState(false);
   const [isSettingsPanelOpen, setIsSettingsPanelOpen] = useState(false);
+  const { words, setWordsData, isLoading, errorMessage } = useSetWordsData();
   const [search, setSearch] = useState<searchTypes>({
     searchPrompt: "",
     partOfSpeech: "",
@@ -25,10 +28,14 @@ export const DictionaryPage = () => {
       <isNavPanelOpenContext.Provider
         value={[isNavPanelOpen, setIsNavPanelOpen]}
       >
-        <searchContext.Provider value={[search, setSearch]}>
-          <TopBar></TopBar>
-          <WordsBar></WordsBar>
-        </searchContext.Provider>
+        <wordsDataContext.Provider
+          value={[words, setWordsData, isLoading, errorMessage]}
+        >
+          <searchContext.Provider value={[search, setSearch]}>
+            <TopBar></TopBar>
+            <WordsBar></WordsBar>
+          </searchContext.Provider>
+        </wordsDataContext.Provider>
 
         <NavPanel></NavPanel>
         <SettingsPanel></SettingsPanel>

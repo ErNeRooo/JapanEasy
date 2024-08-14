@@ -2,12 +2,13 @@ import { memo, useContext, CSSProperties, useEffect } from "react";
 import styles from "./WordsBar.module.sass";
 import { Word } from "./Word/Word";
 import themeContext from "../../../context/themeStateContext";
-import useSetWordsData from "../../../hooks/useSetWordsData";
 import SeeMoreButton from "./SeeMoreButton/SeeMoreButton";
+import wordsDataContext from "../../../context/wordsDataContext";
 
 const WordsBar = memo(() => {
   const [{ mainFontColor }] = useContext(themeContext);
-  const { words, setWordsData, isLoading, errorMessage } = useSetWordsData();
+  const [words, setWordsData, isLoading, errorMessage] =
+    useContext(wordsDataContext);
 
   const loadingStyle: CSSProperties = {
     borderRightColor: mainFontColor,
@@ -59,7 +60,7 @@ const WordsBar = memo(() => {
           />
         )
       )}
-      <SeeMoreButton words={words} setWords={setWordsData} />
+      <SeeMoreButton />
     </div>
   );
 });

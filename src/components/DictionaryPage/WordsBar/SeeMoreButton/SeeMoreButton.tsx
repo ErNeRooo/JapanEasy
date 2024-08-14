@@ -1,10 +1,13 @@
 import { CSSProperties, useContext } from "react";
 import styles from "./SeeMoreButton.module.sass";
 import themeStateContext from "../../../../context/themeStateContext";
-import wordTypes from "../../../../types/wordTypes";
+import wordsDataContext from "../../../../context/wordsDataContext";
+import searchContext from "../../../../context/searchContext";
 
-const SeeMoreButton = ({ words, setWords }: Props) => {
+const SeeMoreButton = () => {
   const [{ wordColor, mainFontColor }] = useContext(themeStateContext);
+  const [words, setWords] = useContext(wordsDataContext);
+  const [{ searchPrompt }] = useContext(searchContext);
 
   const SeeMoreButtonStyle: CSSProperties = {
     background: wordColor,
@@ -18,7 +21,7 @@ const SeeMoreButton = ({ words, setWords }: Props) => {
     setWords();
   };
 
-  if (words.length >= 5000) return;
+  if (words.length >= 5000 || searchPrompt !== "") return;
 
   return (
     <div
@@ -30,10 +33,5 @@ const SeeMoreButton = ({ words, setWords }: Props) => {
     </div>
   );
 };
-
-interface Props {
-  words: wordTypes[];
-  setWords: () => void;
-}
 
 export default SeeMoreButton;
