@@ -59,7 +59,7 @@ const WordsBar = memo(() => {
           />
         )
       )}
-      <SeeMoreButton setWords={setWordsData} />
+      <SeeMoreButton words={words} setWords={setWordsData} />
     </div>
   );
 });
