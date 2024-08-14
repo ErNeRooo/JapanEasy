@@ -13,13 +13,14 @@ import useSetWordsData from "../../hooks/useSetWordsData.ts";
 export const DictionaryPage = () => {
   const [isNavPanelOpen, setIsNavPanelOpen] = useState(false);
   const [isSettingsPanelOpen, setIsSettingsPanelOpen] = useState(false);
-  const { words, setWordsData, isLoading, errorMessage } = useSetWordsData();
   const [search, setSearch] = useState<searchTypes>({
     searchPrompt: "",
     partOfSpeech: "",
     field: "Rank",
     order: "asc",
   });
+  const { words, setWordsData, isLoading, errorMessage } =
+    useSetWordsData(search);
 
   return (
     <isSettingsPanelOpenStateContext.Provider

@@ -5,7 +5,6 @@ import styles from "./SearchBar.module.sass";
 import themeContext from "../../../../context/themeStateContext";
 import FilterMenu from "./FilterMenu/FilterMenu";
 import searchContext from "../../../../context/searchContext";
-import searchTypes from "../../../../types/searchTypes";
 import wordsDataContext from "../../../../context/wordsDataContext";
 
 export const SearchBar = () => {
@@ -35,12 +34,10 @@ export const SearchBar = () => {
     color: mainFontColor,
   };
   const handleChange = (e: BaseSyntheticEvent): void => {
-    const newSearchObject: searchTypes = {
+    setSearch({
       ...search,
       searchPrompt: e.target.value,
-    };
-
-    setSearch(newSearchObject);
+    });
   };
 
   const handleSearchClick = (): void => {

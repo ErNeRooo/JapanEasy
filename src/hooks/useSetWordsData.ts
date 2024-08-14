@@ -11,25 +11,37 @@ import { useContext, useState } from "react";
 import wordTypes from "../types/wordTypes";
 import { db } from "../firebaseConfig";
 import searchContext from "../context/searchContext";
+import searchTypes from "../types/searchTypes";
 
 let countSeeMoreTriggers = 0;
-const useSetWordsData = () => {
+const useSetWordsData = ({
+  searchPrompt,
+  partOfSpeech,
+  field,
+  order,
+}: searchTypes) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState("");
   const [words, setWords] = useState<wordTypes[]>([]);
-  const [{ searchPrompt, partOfSpeech, field, order }] =
-    useContext(searchContext);
 
   const setWordsData = () => {
     if (searchPrompt === "") {
       const filterOperator = order === "asc" ? ">" : "<";
-      const wordsQuery = query(
-        collection(db, "words"),
-        orderBy(field, order),
-        where("Rank", filterOperator, countSeeMoreTriggers * 50),
-        //where("PartOfSpeech", "==", "v."),
-        limit(50)
-      );
+      const wordsQuery =
+        partOfSpeech === ""
+          ? query(
+              collection(db, "words"),
+              orderBy(field, order),
+              where("Rank", filterOperator, countSeeMoreTriggers * 50),
+              limit(50)
+            )
+          : query(
+              collection(db, "words"),
+              orderBy(field, order),
+              where("Rank", filterOperator, countSeeMoreTriggers * 50),
+              where("PartOfSpeech", "==", partOfSpeech),
+              limit(50)
+            );
 
       getWords(wordsQuery).then((wordsArray) => {
         setWords((prev): wordTypes[] => [...prev, ...wordsArray]);
@@ -39,10 +51,7 @@ const useSetWordsData = () => {
       const wordsQuery = query(
         collection(db, "words"),
         orderBy(field, order),
-        where("PartOfSpeech", "==", partOfSpeech),
         where("Romaji", "==", searchPrompt),
-        where("Lemma", "==", searchPrompt),
-        where("Rank", "==", searchPrompt),
         limit(50)
       );
 
