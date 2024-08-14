@@ -6,20 +6,23 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import wordTypes from "../types/wordTypes";
 import { db } from "../firebaseConfig";
+import searchContext from "../context/searchContext";
 
 const useSetWordsData = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [words, setWords] = useState<wordTypes[]>([]);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [{ searchPrompt, partOfSpeech, field, order }] =
+    useContext(searchContext);
   let countSetWordsDataTriggers = 0;
 
   const setWordsData = useCallback(() => {
     const wordsDataQuery =
       countSetWordsDataTriggers === 0
-        ? query(collection(db, "words"), orderBy("Rank", "asc"), limit(50))
+        ? query(collection(db, "wordss"), orderBy("Rank", "asc"), limit(50))
         : query(
             collection(db, "words"),
             orderBy("Rank", "asc"),
@@ -54,6 +57,11 @@ const useSetWordsData = () => {
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    console.log(searchPrompt, " ", partOfSpeech, " ", field, " ", order);
+    // eslint-disable-next-line
+  }, [searchPrompt, partOfSpeech, field, order]);
 
   return { words, setWordsData, isLoading, errorMessage };
 };

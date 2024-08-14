@@ -5,10 +5,18 @@ import isNavPanelOpenContext from "../../context/isNavPanelOpenStateContext.ts";
 import isSettingsPanelOpenStateContext from "../../context/isSettingsPanelOpenStateContext.ts";
 import { useState } from "react";
 import SettingsPanel from "./SettingsPanel/SettingsPanel.tsx";
+import searchContext from "../../context/searchContext.ts";
+import searchTypes from "../../types/searchTypes.ts";
 
 export const DictionaryPage = () => {
   const [isNavPanelOpen, setIsNavPanelOpen] = useState(false);
   const [isSettingsPanelOpen, setIsSettingsPanelOpen] = useState(false);
+  const [search, setSearch] = useState<searchTypes>({
+    searchPrompt: "",
+    partOfSpeech: "",
+    field: "Rank",
+    order: "asc",
+  });
 
   return (
     <isSettingsPanelOpenStateContext.Provider
@@ -17,9 +25,12 @@ export const DictionaryPage = () => {
       <isNavPanelOpenContext.Provider
         value={[isNavPanelOpen, setIsNavPanelOpen]}
       >
-        <TopBar></TopBar>
+        <searchContext.Provider value={[search, setSearch]}>
+          <TopBar></TopBar>
+          <WordsBar></WordsBar>
+        </searchContext.Provider>
+
         <NavPanel></NavPanel>
-        <WordsBar></WordsBar>
         <SettingsPanel></SettingsPanel>
       </isNavPanelOpenContext.Provider>
     </isSettingsPanelOpenStateContext.Provider>

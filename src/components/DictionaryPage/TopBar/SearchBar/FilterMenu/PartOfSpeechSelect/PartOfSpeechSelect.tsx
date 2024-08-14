@@ -1,14 +1,26 @@
-import { CSSProperties, useContext, useState } from "react";
+import { BaseSyntheticEvent, CSSProperties, useContext, useState } from "react";
 import styles from "./PartOfSpeechSelect.module.sass";
 import themeContext from "../../../../../../context/themeStateContext";
+import searchContext from "../../../../../../context/searchContext";
+import searchTypes from "../../../../../../types/searchTypes";
 
 const PartOfSpeechSelect = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [{ secondColor, secondFontColor }] = useContext(themeContext);
+  const [search, setSearch] = useContext(searchContext);
 
   const selectStyle: CSSProperties = {
     color: secondFontColor,
     background: secondColor,
+  };
+
+  const handleChange = (e: BaseSyntheticEvent): void => {
+    const newSearchObject: searchTypes = {
+      ...search,
+      partOfSpeech: e.target.value,
+    };
+
+    setSearch(newSearchObject);
   };
 
   return (
@@ -21,6 +33,7 @@ const PartOfSpeechSelect = () => {
         onClick={() => {
           setIsClicked(!isClicked);
         }}
+        onChange={handleChange}
       >
         <option value="">{isClicked ? "▲" : "▼"}</option>
         <option value="adn.">adn. | adnominal</option>
