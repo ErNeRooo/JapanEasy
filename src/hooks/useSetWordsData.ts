@@ -1,9 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import wordTypes from "../types/wordTypes";
 import searchTypes from "../types/searchTypes";
 import dictionaryData from "../assets/dictionaryData.json";
 
-let countSeeMoreTriggers = 1;
 const useSetWordsData = ({
   searchPrompt,
   partOfSpeech,
@@ -18,7 +17,14 @@ const useSetWordsData = ({
   const [errorMessage, setErrorMessage] = useState("");
   const [words, setWords] = useState<wordTypes[]>([]);
 
-  const setWordsData = useCallback(() => {
+  const setWordsData = (isSeeMore: boolean = false) => {
+    const from =
+      words.length % 50 === 0
+        ? words.length
+        : Math.trunc(words.length / 50) * 50;
+
+    const to = from + 50;
+
     const result = getWords()
       .filter((word) => {
         if (partOfSpeech) {
@@ -59,15 +65,26 @@ const useSetWordsData = ({
         }
         return 0;
       })
-      .slice((countSeeMoreTriggers - 1) * 50, countSeeMoreTriggers * 50);
+      .slice(isSeeMore ? from : 0, isSeeMore ? to : 50);
+
+    console.log(from, to);
 
     if (result.length === 0) setErrorMessage("No words found");
 
-    if (countSeeMoreTriggers === 1) setWords(result);
-    else setWords((prev): wordTypes[] => [...prev, ...result]);
-    countSeeMoreTriggers++;
+    if (isSeeMore) {
+      setWords((prev): wordTypes[] => [...prev, ...result]);
+    } else {
+      setWords([...result]);
+    }
 
     setIsLoading(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
+
+  useEffect(() => {
+    setErrorMessage("");
+    console.log(words);
+    setWordsData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     searchPrompt,
@@ -79,13 +96,6 @@ const useSetWordsData = ({
     isRomajiSearchActive,
     isEnglishSearchActive,
   ]);
-
-  useEffect(() => {
-    setErrorMessage("");
-    setWordsData();
-    countSeeMoreTriggers = 1;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setWordsData]);
 
   const getWords = (): wordTypes[] => {
     const wordsArray: wordTypes[] = [];

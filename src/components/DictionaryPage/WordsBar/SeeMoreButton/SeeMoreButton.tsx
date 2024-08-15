@@ -16,7 +16,7 @@ const SeeMoreButton = () => {
   };
 
   const handleClick = (): void => {
-    setWords();
+    setWords(true);
   };
 
   if (words.length >= 5000 || words.length < 50) return;
