@@ -13,7 +13,7 @@ export const SearchBar = () => {
   const [{ searchBarColor, iconsColor, lineColor, mainFontColor }] =
     useContext(themeContext);
   const [search, setSearch] = useContext(searchContext);
-  const [, setWordsData] = useContext(wordsDataContext);
+  const [words, setWordsData] = useContext(wordsDataContext);
 
   const backgroundStyle: CSSProperties = {
     background: searchBarColor,
@@ -42,6 +42,7 @@ export const SearchBar = () => {
 
   const handleSearchClick = (): void => {
     setWordsData();
+    console.log(words.length);
   };
 
   return (
