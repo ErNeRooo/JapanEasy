@@ -16,6 +16,8 @@ const useSetWordsData = ({
   const setWordsData = () => {
     if (searchPrompt === "") {
       getWords().then((wordsArray) => {
+        const result = wordsArray.slice(0, 50);
+
         setWords((prev): wordTypes[] => [...prev, ...wordsArray]);
         countSeeMoreTriggers++;
       });
