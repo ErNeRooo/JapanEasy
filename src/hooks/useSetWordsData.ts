@@ -47,6 +47,8 @@ const useSetWordsData = ({
       })
       .slice((countSeeMoreTriggers - 1) * 50, countSeeMoreTriggers * 50);
 
+    if (result.length === 0) setErrorMessage("No words found");
+
     if (countSeeMoreTriggers === 1) setWords(result);
     else setWords((prev): wordTypes[] => [...prev, ...result]);
     countSeeMoreTriggers++;
@@ -58,8 +60,8 @@ const useSetWordsData = ({
     setErrorMessage("");
     setWordsData();
     countSeeMoreTriggers = 1;
-    if (words.length === 0) setErrorMessage("No words found");
-  }, [setWordsData, words, setErrorMessage]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setWordsData]);
 
   const getWords = (): wordTypes[] => {
     const wordsArray: wordTypes[] = [];

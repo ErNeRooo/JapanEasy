@@ -18,14 +18,10 @@ const WordsBar = memo(() => {
   };
 
   if (errorMessage) {
-    console.log(errorMessage);
-
     return (
       <div className={styles.WordsBar}>
         <div className={styles.error} style={errorStyle}>
-          {errorMessage === "Quota exceeded."
-            ? "Too many requests. Please try again later."
-            : errorMessage}
+          {errorMessage}
           <span>:/</span>
         </div>
       </div>
