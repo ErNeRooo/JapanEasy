@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import wordTypes from "../types/wordTypes";
 import searchTypes from "../types/searchTypes";
 
@@ -13,7 +13,7 @@ const useSetWordsData = ({
   const [errorMessage, setErrorMessage] = useState("");
   const [words, setWords] = useState<wordTypes[]>([]);
 
-  const setWordsData = () => {
+  const setWordsData = useCallback(() => {
     getWords().then((wordsArray) => {
       const result = wordsArray
         .filter((word) => {
@@ -49,16 +49,16 @@ const useSetWordsData = ({
         })
         .slice((countSeeMoreTriggers - 1) * 50, countSeeMoreTriggers * 50);
 
-      console.log("pozdro");
       if (countSeeMoreTriggers === 1) setWords(result);
       else setWords((prev): wordTypes[] => [...prev, ...result]);
       countSeeMoreTriggers++;
     });
-  };
+  }, [searchPrompt, partOfSpeech, field, order]);
 
   useEffect(() => {
+    setWordsData();
     countSeeMoreTriggers = 1;
-  }, [searchPrompt, partOfSpeech, field, order]);
+  }, [setWordsData]);
 
   const getWords = async (): Promise<wordTypes[]> => {
     return new Promise<wordTypes[]>((resolve, reject) => {

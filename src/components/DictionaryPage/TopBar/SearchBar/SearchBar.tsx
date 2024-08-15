@@ -1,11 +1,9 @@
 import { BaseSyntheticEvent, CSSProperties, useContext, useState } from "react";
-import searchIcon from "../../../../assets/Search-Icon.svg";
 import slidersIcon from "../../../../assets/sliders-icon.svg";
 import styles from "./SearchBar.module.sass";
 import themeContext from "../../../../context/themeStateContext";
 import FilterMenu from "./FilterMenu/FilterMenu";
 import searchContext from "../../../../context/searchContext";
-import wordsDataContext from "../../../../context/wordsDataContext";
 
 export const SearchBar = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,13 +11,9 @@ export const SearchBar = () => {
   const [{ searchBarColor, iconsColor, lineColor, mainFontColor }] =
     useContext(themeContext);
   const [search, setSearch] = useContext(searchContext);
-  const [words, setWordsData] = useContext(wordsDataContext);
 
   const backgroundStyle: CSSProperties = {
     background: searchBarColor,
-  };
-  const searchIconStyle: CSSProperties = {
-    filter: iconsColor,
   };
   const filterIconStyle: CSSProperties = {
     filter: iconsColor,
@@ -40,18 +34,9 @@ export const SearchBar = () => {
     });
   };
 
-  const handleSearchClick = (): void => {
-    setWordsData();
-    console.log(words.length);
-  };
-
   return (
     <div className={styles.searchBar} style={backgroundStyle}>
-      <div className={styles.searchIcon} onClick={handleSearchClick}>
-        <img src={searchIcon} style={searchIconStyle} />
-      </div>
       <hr style={lineStyle} />
-
       <input
         type="text"
         style={inputStyle}
