@@ -4,6 +4,7 @@ import themeContext from "../../../../../context/themeStateContext";
 import PartOfSpeechSelect from "./PartOfSpeechSelect/PartOfSpeechSelect";
 import SortFieldSelect from "./SortSelect/SortFieldSelect";
 import SortOrderBySelect from "./SortOrderBySelect/SortOrderBySelect";
+import PromptCheckBoxes from "./PromptCheckBoxes/PromptCheckBoxes";
 
 const FilterMenu = ({ isVisible }: Props) => {
   const [{ mainFontColor, secondFontColor, sidePanelsColor }] =
@@ -60,6 +61,14 @@ const FilterMenu = ({ isVisible }: Props) => {
       </div>
       <div className={styles.line}>
         <SortOrderBySelect></SortOrderBySelect>
+      </div>
+      <div className={styles.line}>
+        <span style={titleStyle} className={styles.title}>
+          Search By
+        </span>
+      </div>
+      <div className={styles.line}>
+        <PromptCheckBoxes></PromptCheckBoxes>
       </div>
     </div>
   );

@@ -9,6 +9,10 @@ const searchContext = createContext<
     partOfSpeech: "",
     field: "Rank",
     order: "asc",
+    isRankSearchActive: false,
+    isLemmaSearchActive: true,
+    isRomajiSearchActive: true,
+    isEnglishSearchActive: false,
   },
   () => {},
 ]);

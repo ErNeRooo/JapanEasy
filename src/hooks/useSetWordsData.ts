@@ -9,6 +9,10 @@ const useSetWordsData = ({
   partOfSpeech,
   field,
   order,
+  isRankSearchActive,
+  isLemmaSearchActive,
+  isRomajiSearchActive,
+  isEnglishSearchActive,
 }: searchTypes) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState("");
@@ -28,9 +32,19 @@ const useSetWordsData = ({
       .filter((word) => {
         if (searchPrompt) {
           return (
-            word["Rank"].toString() === searchPrompt ||
-            word["Romaji"].toLowerCase().includes(searchPrompt.toLowerCase()) ||
-            word["Lemma"].toLowerCase().includes(searchPrompt.toLowerCase())
+            (isRankSearchActive && word["Rank"].toString() === searchPrompt) ||
+            (isRomajiSearchActive &&
+              word["Romaji"]
+                .toLowerCase()
+                .includes(searchPrompt.toLowerCase())) ||
+            (isLemmaSearchActive &&
+              word["Lemma"]
+                .toLowerCase()
+                .includes(searchPrompt.toLowerCase())) ||
+            (isEnglishSearchActive &&
+              word["EnglishGloss"]
+                .toLowerCase()
+                .includes(searchPrompt.toLowerCase()))
           );
         } else {
           return word;
@@ -54,7 +68,17 @@ const useSetWordsData = ({
     countSeeMoreTriggers++;
 
     setIsLoading(false);
-  }, [searchPrompt, partOfSpeech, field, order]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    searchPrompt,
+    partOfSpeech,
+    field,
+    order,
+    isRankSearchActive,
+    isLemmaSearchActive,
+    isRomajiSearchActive,
+    isEnglishSearchActive,
+  ]);
 
   useEffect(() => {
     setErrorMessage("");

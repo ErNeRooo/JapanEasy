@@ -6,4 +6,8 @@ export default interface searchTypes {
   partOfSpeech: string;
   field: keyof wordTypes;
   order: OrderByDirection;
+  isRankSearchActive: boolean;
+  isLemmaSearchActive: boolean;
+  isRomajiSearchActive: boolean;
+  isEnglishSearchActive: boolean;
 }

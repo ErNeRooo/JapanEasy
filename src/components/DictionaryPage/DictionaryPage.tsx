@@ -18,6 +18,10 @@ export const DictionaryPage = () => {
     partOfSpeech: "",
     field: "Rank",
     order: "asc",
+    isRankSearchActive: false,
+    isLemmaSearchActive: true,
+    isRomajiSearchActive: true,
+    isEnglishSearchActive: false,
   });
   const { words, setWordsData, isLoading, errorMessage } =
     useSetWordsData(search);
