@@ -41,10 +41,7 @@ export const SearchBar = () => {
   };
 
   const handleSearchClick = (): void => {
-    if (search.searchPrompt !== "" && search.partOfSpeech !== "") {
-      console.log("Searching for: " + search.searchPrompt);
-      setWordsData();
-    }
+    setWordsData();
   };
 
   return (

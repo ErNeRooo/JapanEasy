@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import wordTypes from "../types/wordTypes";
 import searchTypes from "../types/searchTypes";
 
-let countSeeMoreTriggers = 0;
+let countSeeMoreTriggers = 1;
 const useSetWordsData = ({
   searchPrompt,
   partOfSpeech,
@@ -14,19 +14,51 @@ const useSetWordsData = ({
   const [words, setWords] = useState<wordTypes[]>([]);
 
   const setWordsData = () => {
-    if (searchPrompt === "") {
-      getWords().then((wordsArray) => {
-        const result = wordsArray.slice(0, 50);
+    getWords().then((wordsArray) => {
+      const result = wordsArray
+        .filter((word) => {
+          if (partOfSpeech) {
+            return word.PartOfSpeech.replace(",", "")
+              .split(" ")
+              .includes(partOfSpeech);
+          } else {
+            return word;
+          }
+        })
+        .filter((word) => {
+          if (searchPrompt) {
+            return (
+              word["Rank"].toString() === searchPrompt ||
+              word["Romaji"]
+                .toLowerCase()
+                .includes(searchPrompt.toLowerCase()) ||
+              word["Lemma"].toLowerCase().includes(searchPrompt.toLowerCase())
+            );
+          } else {
+            return word;
+          }
+        })
+        .sort((a, b) => {
+          if (a[field] < b[field]) {
+            return order === "asc" ? -1 : 1;
+          }
+          if (a[field] > b[field]) {
+            return order === "asc" ? 1 : -1;
+          }
+          return 0;
+        })
+        .slice((countSeeMoreTriggers - 1) * 50, countSeeMoreTriggers * 50);
 
-        setWords((prev): wordTypes[] => [...prev, ...wordsArray]);
-        countSeeMoreTriggers++;
-      });
-    } else {
-      getWords().then((wordsArray) => {
-        setWords(wordsArray);
-      });
-    }
+      console.log("pozdro");
+      if (countSeeMoreTriggers === 1) setWords(result);
+      else setWords((prev): wordTypes[] => [...prev, ...result]);
+      countSeeMoreTriggers++;
+    });
   };
+
+  useEffect(() => {
+    countSeeMoreTriggers = 1;
+  }, [searchPrompt, partOfSpeech, field, order]);
 
   const getWords = async (): Promise<wordTypes[]> => {
     return new Promise<wordTypes[]>((resolve, reject) => {
