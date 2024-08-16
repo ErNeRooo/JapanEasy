@@ -19,7 +19,7 @@ const SeeMoreButton = () => {
     setWords(true);
   };
 
-  if (words.length >= 5000 || words.length < 50) return;
+  if (words.length >= 5000 || words.length % 50 !== 0) return;
 
   return (
     <div

@@ -67,9 +67,7 @@ const useSetWordsData = ({
       })
       .slice(isSeeMore ? from : 0, isSeeMore ? to : 50);
 
-    console.log(from, to);
-
-    if (result.length === 0) setErrorMessage("No words found");
+    if (result.length === 0 && !isSeeMore) setErrorMessage("No words found");
 
     if (isSeeMore) {
       setWords((prev): wordTypes[] => [...prev, ...result]);
@@ -78,12 +76,10 @@ const useSetWordsData = ({
     }
 
     setIsLoading(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   };
 
   useEffect(() => {
     setErrorMessage("");
-    console.log(words);
     setWordsData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
