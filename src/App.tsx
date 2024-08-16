@@ -1,10 +1,10 @@
 import "./App.module.sass";
-import { DictionaryPage } from "./components/DictionaryPage/DictionaryPage";
+import { DictionaryPage } from "./pages/DictionaryPage/DictionaryPage";
 import { firebaseConfig } from "./firebaseConfig";
 import firebase from "firebase/compat/app";
 import themeContext from "./context/themeStateContext";
 import { useState } from "react";
-import Seeder from "./Seeder";
+import Seeder from "./utils/Seeder";
 import themeTypes from "./types/themeTypes";
 
 function App() {
