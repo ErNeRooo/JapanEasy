@@ -1,5 +1,4 @@
 import "./App.module.sass";
-import { DictionaryPage } from "./pages/DictionaryPage/DictionaryPage";
 import { firebaseConfig } from "./firebaseConfig";
 import firebase from "firebase/compat/app";
 import themeContext from "./context/themeStateContext";
@@ -7,7 +6,7 @@ import { useState } from "react";
 import Seeder from "./utils/WordsDataSeeder";
 import themeTypes from "./types/themeTypes";
 
-function App() {
+function App({ children }: Props) {
   const [theme, setTheme] = useState<themeTypes>({
     name: "dark",
     sidePanelsColor: "#212121",
@@ -33,9 +32,13 @@ function App() {
 
   return (
     <themeContext.Provider value={[theme, setTheme]}>
-      <DictionaryPage></DictionaryPage>
+      {children}
     </themeContext.Provider>
   );
+}
+
+interface Props {
+  children: JSX.Element;
 }
 
 export default App;

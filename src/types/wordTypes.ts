@@ -4,4 +4,6 @@ export default interface wordTypes {
   Romaji: string;
   PartOfSpeech: string;
   EnglishGloss: string;
+  IllustrativeExample: string;
+  IllustrativeExampleTranslation: string;
 }
