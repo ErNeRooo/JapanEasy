@@ -4,7 +4,7 @@ import { firebaseConfig } from "./firebaseConfig";
 import firebase from "firebase/compat/app";
 import themeContext from "./context/themeStateContext";
 import { useState } from "react";
-import Seeder from "./utils/Seeder";
+import Seeder from "./utils/WordsDataSeeder";
 import themeTypes from "./types/themeTypes";
 
 function App() {
