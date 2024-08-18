@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import wordTypes from "../types/wordTypes";
 import searchTypes from "../types/searchTypes";
-import dictionaryData from "../assets/dictionaryData.json";
+import getWords from "../utils/getWords";
 
 const useSetWordsData = ({
   searchPrompt,
@@ -92,16 +92,6 @@ const useSetWordsData = ({
     isRomajiSearchActive,
     isEnglishSearchActive,
   ]);
-
-  const getWords = (): wordTypes[] => {
-    const wordsArray: wordTypes[] = [];
-
-    dictionaryData.forEach((doc: wordTypes) => {
-      wordsArray.push(doc);
-    });
-
-    return wordsArray;
-  };
 
   return { words, setWordsData, isLoading, errorMessage };
 };
