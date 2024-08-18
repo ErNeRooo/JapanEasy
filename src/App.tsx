@@ -5,8 +5,12 @@ import themeContext from "./context/themeStateContext";
 import { useState } from "react";
 import Seeder from "./utils/WordsDataSeeder";
 import themeTypes from "./types/themeTypes";
+import isSettingsPanelOpenStateContext from "./context/isSettingsPanelOpenStateContext";
+import isNavPanelOpenContext from "./context/isNavPanelOpenStateContext";
 
 function App({ children }: Props) {
+  const [isNavPanelOpen, setIsNavPanelOpen] = useState(false);
+  const [isSettingsPanelOpen, setIsSettingsPanelOpen] = useState(false);
   const [theme, setTheme] = useState<themeTypes>({
     name: "dark",
     sidePanelsColor: "#212121",
@@ -32,7 +36,15 @@ function App({ children }: Props) {
 
   return (
     <themeContext.Provider value={[theme, setTheme]}>
-      {children}
+      <isSettingsPanelOpenStateContext.Provider
+        value={[isSettingsPanelOpen, setIsSettingsPanelOpen]}
+      >
+        <isNavPanelOpenContext.Provider
+          value={[isNavPanelOpen, setIsNavPanelOpen]}
+        >
+          {children}
+        </isNavPanelOpenContext.Provider>
+      </isSettingsPanelOpenStateContext.Provider>
     </themeContext.Provider>
   );
 }
