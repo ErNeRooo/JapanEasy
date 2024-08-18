@@ -3,12 +3,16 @@ import styles from "./TopBar.module.sass";
 import { NavPanelButton } from "./NavPanelButton/NavPanelButton";
 import { SettingsPanelButton } from "./SettingsPanelButton/SettingsPanelButton";
 
-export const TopBar = () => {
+const TopBar = ({ isSearchBarVisible = true }: Props) => {
   return (
     <div className={styles.TopBar}>
       <NavPanelButton></NavPanelButton>
-      <SearchBar></SearchBar>
+      {isSearchBarVisible && <SearchBar></SearchBar>}
       <SettingsPanelButton></SettingsPanelButton>
     </div>
   );
 };
+interface Props {
+  isSearchBarVisible: boolean;
+}
+export default TopBar;

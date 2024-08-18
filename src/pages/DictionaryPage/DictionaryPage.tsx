@@ -1,5 +1,5 @@
 import WordsBar from "../../components/WordsBar/WordsBar.tsx";
-import { TopBar } from "../../components/TopBar/TopBar.tsx";
+import TopBar from "../../components/TopBar/TopBar.tsx";
 import NavPanel from "../../components/NavPanel/NavPanel.tsx";
 import isNavPanelOpenContext from "../../context/isNavPanelOpenStateContext.ts";
 import isSettingsPanelOpenStateContext from "../../context/isSettingsPanelOpenStateContext.ts";
@@ -37,7 +37,7 @@ export const DictionaryPage = () => {
           value={[words, setWordsData, isLoading, errorMessage]}
         >
           <searchContext.Provider value={[search, setSearch]}>
-            <TopBar></TopBar>
+            <TopBar isSearchBarVisible={true} />
             <WordsBar></WordsBar>
           </searchContext.Provider>
         </wordsDataContext.Provider>
