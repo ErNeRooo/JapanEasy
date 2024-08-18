@@ -1,7 +1,7 @@
 import styles from "./NavPanel.module.sass";
 import { CSSProperties, useContext } from "react";
-import isOpenContext from "../../context/isNavPanelOpenStateContext";
-import themeContext from "../../context/themeStateContext";
+import isOpenContext from "../../../context/isNavPanelOpenStateContext";
+import themeContext from "../../../context/themeStateContext";
 import NavBar from "./NavBar/NavBar";
 
 const NavPanel = () => {

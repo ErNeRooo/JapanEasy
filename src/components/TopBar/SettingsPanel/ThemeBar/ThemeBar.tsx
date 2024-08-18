@@ -1,8 +1,8 @@
 import styles from "./ThemeBar.module.sass";
 import Theme from "./Theme/Theme";
-import themes from "../../../assets/themes.json";
+import themes from "../../../../assets/themes.json";
 import { CSSProperties, useContext } from "react";
-import themeContext from "../../../context/themeStateContext";
+import themeContext from "../../../../context/themeStateContext";
 
 const ThemeBar = () => {
   const [{ mainColor }] = useContext(themeContext);

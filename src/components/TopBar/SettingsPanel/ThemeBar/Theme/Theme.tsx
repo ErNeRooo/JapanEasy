@@ -1,8 +1,8 @@
 import styles from "./Theme.module.sass";
-import themes from "../../../../assets/themes.json";
+import themes from "../../../../../assets/themes.json";
 import { useContext } from "react";
-import themeContext from "../../../../context/themeStateContext";
-import themeTypes from "../../../../types/themeTypes";
+import themeContext from "../../../../../context/themeStateContext";
+import themeTypes from "../../../../../types/themeTypes";
 
 const Theme = ({ name, backgroundColor }: Props) => {
   const [, setTheme] = useContext(themeContext);

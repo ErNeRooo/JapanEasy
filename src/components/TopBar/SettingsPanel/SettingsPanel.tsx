@@ -1,8 +1,8 @@
 import styles from "./SettingsPanel.module.sass";
 import { CSSProperties, useContext } from "react";
-import isOpenContext from "../../context/isSettingsPanelOpenStateContext";
+import isOpenContext from "../../../context/isSettingsPanelOpenStateContext";
 import ThemeBar from "./ThemeBar/ThemeBar";
-import themeContext from "../../context/themeStateContext";
+import themeContext from "../../../context/themeStateContext";
 
 const SettingsPanel = () => {
   const [isOpen] = useContext(isOpenContext);
