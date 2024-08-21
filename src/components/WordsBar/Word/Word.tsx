@@ -30,12 +30,12 @@ export const Word = ({
           </label>
         </div>
         <div className={styles.partOfSpeech}>
-          <label>{PartOfSpeech}</label>
+          <label>{PartOfSpeech.flatMap((part) => part + " ")}</label>
         </div>
       </div>
       <div className={styles.downFlexContainer}></div>
       <div className={styles.definition}>
-        <label>{EnglishGloss}</label>
+        <label>{EnglishGloss.flatMap((part) => part + " ")}</label>
       </div>
     </div>
   );
@@ -44,7 +44,7 @@ export const Word = ({
 interface Props {
   Rank: number;
   Lemma: string;
-  PartOfSpeech: string;
-  EnglishGloss: string;
+  PartOfSpeech: string[];
+  EnglishGloss: string[];
   Romaji: string;
 }
