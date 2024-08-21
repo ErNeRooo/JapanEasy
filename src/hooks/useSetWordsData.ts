@@ -28,9 +28,7 @@ const useSetWordsData = ({
     const result = getWords()
       .filter((word) => {
         if (partOfSpeech) {
-          return word.PartOfSpeech.replace(",", "")
-            .split(" ")
-            .includes(partOfSpeech);
+          return word.PartOfSpeech.includes(partOfSpeech);
         } else {
           return word;
         }
@@ -48,9 +46,7 @@ const useSetWordsData = ({
                 .toLowerCase()
                 .includes(searchPrompt.toLowerCase())) ||
             (isEnglishSearchActive &&
-              word["EnglishGloss"]
-                .toLowerCase()
-                .includes(searchPrompt.toLowerCase()))
+              word["EnglishGloss"].includes(searchPrompt.toLowerCase()))
           );
         } else {
           return word;
