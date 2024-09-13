@@ -1,9 +1,9 @@
 .KanaBar
     max-width: 35rem
     min-width: 15rem
-    height: 80%
 
-    padding-inline: 2rem
+    padding: 2rem
+    box-sizing: border-box
 
     border-radius: 1rem
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.30)
@@ -12,14 +12,105 @@
     flex-direction: column
     align-items: center
     justify-content: center
+    gap: 1rem
 
     margin-top: 7rem
     margin-left: auto
     margin-right: auto
 
 .Kana
+    min-width: 8rem
+    width: 100%
+    height: 8rem
+
     font-size: 5rem
     font-weight: 400
+    padding-inline: 2rem
+    box-sizing: border-box
+
+    border-radius: 2rem
+
+    display: flex
+    justify-content: center
+    align-items: center
+
+.answer
+    width: 100%
+    height: 2rem
+
+    border-radius: 2rem
+    box-sizing: border-box
+
+    display: flex
+    justify-content: center
+    align-items: center
+
+.userInput
+    all: unset
+    width: 100%
+
+    padding: 0.5rem
+    box-sizing: border-box
+    border-radius: 2rem
+
+    text-align: center
+
+.checkButton
+    all: unset
+    width: 100%
+
+    padding: 0.5rem
+    box-sizing: border-box
+    border-radius: 2rem
+
+    text-align: center
+
+    transition: 200ms
+
+.options
+    width: 100%
+
+    display: flex
+    flex-direction: column
+
+    gap: 0.2rem
 
     h1
+        font-size: 1.5rem
+        margin-bottom: 0.5rem
+
+    button
         all: unset
+        border-radius: 2rem
+
+        padding-inline: 0.5rem
+        padding-block: 0.1rem
+        box-sizing: border-box
+        margin-right: 0.5rem
+        margin-bottom: 0.5rem
+
+        transition: 200ms
+
+
+    input
+        all: unset
+        width: 1.2rem
+        height: 1.2rem
+        
+        box-sizing: border-box
+        border-radius: 30%
+        margin-right: 0.5rem
+        transition: all 200ms
+        cursor: pointer
+
+        &:checked
+            transition: all 200ms
+
+
+.line
+    width: 100%
+
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
