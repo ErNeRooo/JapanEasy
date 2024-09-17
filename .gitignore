@@ -33,6 +33,8 @@ firebase-debug.*.log*
 
 # Firebase cache
 .firebase/
+firebase
+.firebase/hosting.ZGlzdA.cache
 
 # Firebase config
 

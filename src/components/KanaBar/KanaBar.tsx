@@ -78,7 +78,7 @@ const KanaBar = () => {
     } else {
       setIsResultShow(true);
 
-      if (inputValue === currentKana.romaji) {
+      if (inputValue.toLowerCase() === currentKana.romaji) {
         setResult(true);
       } else {
         setResult(false);
