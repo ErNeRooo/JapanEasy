@@ -6,6 +6,7 @@ import linkListTypes from "../../../../types/linkListTypes";
 import { Link } from "react-router-dom";
 
 const linkList: linkListTypes[] = [
+  { name: "Home", path: "https://japanese-grind.vercel.app" },
   { name: "Kana", path: "/kana" },
   { name: "Dictionary", path: "/" },
 ];
