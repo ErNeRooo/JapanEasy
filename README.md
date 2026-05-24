@@ -1,3 +1,5 @@
+![Showcase](./japanese_grind_showcase.png)
+
 # JapanEasy
 
 ## About
@@ -7,6 +9,7 @@ JapanEasy is a web application designed to help users learn Japanese writing sys
 This project is part of a larger Japanese learning ecosystem that consists of two connected applications.
 
 JapanEasy was originally the first version of the project, built with **Vite**, and focused on:
+
 - Hiragana learning
 - Katakana learning
 - Japanese dictionary functionality
@@ -38,16 +41,19 @@ https://github.com/ErNeRooo/japanese-grind
 ## Features
 
 ### Kana Learning
+
 - Hiragana learning module
 - Katakana learning module
 - Structured practice for memorization
 
 ### Japanese Dictionary
+
 - Word lookup functionality
 - Vocabulary browsing
 - Fast and simple access to meanings
 
 ### Learning Experience
+
 - Minimal and distraction-free interface
 - Focused on repetition and memorization
 
